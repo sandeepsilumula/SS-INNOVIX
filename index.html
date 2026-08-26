@@ -45,6 +45,9 @@
       border-color: var(--color-primary);
       box-shadow: 0 0 0 3px rgba(84, 179, 194, 0.15);
     }
+    .contact-input::-moz-placeholder {
+      color: rgba(255, 255, 255, 0.25);
+    }
     .contact-input::placeholder {
       color: rgba(255, 255, 255, 0.25);
     }
@@ -176,12 +179,8 @@
       --particle-color-4: var(--color-accent);
 
       /* Animation Timing Tokens */
-      --duration-fast: 0.3s;
-      --duration-normal: 0.5s;
-      --duration-slow: 0.8s;
       --duration-slower: 1.2s;
       --duration-slowest: 2s;
-      --duration-cinematic: 2.4s;
       --duration-logo-spin: 20s;
 
       /* Animation Easing Tokens */
@@ -551,7 +550,7 @@
         <!-- Reduced motion fallback -->
         <div class="reduced-motion-fallback hidden flex items-center justify-center">
           <picture>
-            <source srcset="src/assets/logo-icon-isolated-200.webp" type="image/webp">
+            <source srcset="/assets/logo-icon-isolated-200-BtzVvHDn.webp" type="image/webp">
             <img src="/assets/logo-icon-isolated.png" alt="S&S Innovix" class="max-w-[400px] h-auto" />
           </picture>
         </div>
