@@ -4,8 +4,8 @@ import AnimatedSection from './AnimatedSection';
 import DoubleBezelCard from './DoubleBezelCard';
 import { useRef, useEffect } from 'react';
 
-const sandeepImg = new URL('../assets/Profile images/Sandeep.png', import.meta.url).href;
-const sumithImg = new URL('../assets/Profile images/Sumith.jpeg', import.meta.url).href;
+const sandeepImg = new URL('/assets/Profile images/Sandeep.png', import.meta.url).href;
+const sumithImg = new URL('/assets/Profile images/Sumith.jpeg', import.meta.url).href;
 
 function TiltCard({ children, className }: { children: React.ReactNode; className?: string }) {
   const ref = useRef<HTMLDivElement>(null);
