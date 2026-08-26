@@ -1,0 +1,1800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>S&S Innovix — Digital Development Agency</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <meta property="og:title" content="S&S Innovix — Digital Development Agency" />
+  <meta property="og:description" content="Premium landing pages, end-to-end applications, and production-ready updates for the local businesses that move the world forward." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/assets/logo-icon-isolated-200.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="628" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="S&S Innovix — Digital Development Agency" />
+  <meta name="twitter:description" content="Premium landing pages, end-to-end applications, and production-ready updates for the local businesses that move the world forward." />
+  <meta name="twitter:image" content="/assets/logo-icon-isolated-200.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/CustomEase.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap');
+    body { font-family: var(--font-display); }
+    .font-display { font-family: var(--font-display); }
+    .serif-accent { font-family: var(--font-serif); font-style: italic; font-weight: 400; }
+    .gradient-text { background: linear-gradient(90deg, #fff, var(--color-primary), #fff); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+    /* Glassmorphism contact inputs */
+    .contact-input {
+      background: rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(12px) saturate(1.5);
+      -webkit-backdrop-filter: blur(12px) saturate(1.5);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      transition: all var(--duration-normal) cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+    .contact-input:hover {
+      border-color: rgba(255, 255, 255, 0.2);
+      background: rgba(0, 0, 0, 0.45);
+    }
+    .contact-input:focus {
+      background: rgba(0, 0, 0, 0.5);
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px rgba(84, 179, 194, 0.15);
+    }
+    .contact-input::-moz-placeholder {
+      color: rgba(255, 255, 255, 0.25);
+    }
+    .contact-input::placeholder {
+      color: rgba(255, 255, 255, 0.25);
+    }
+
+    /* Bento card hover */
+    .bento-card {
+      transition: transform var(--duration-normal) cubic-bezier(0.25, 0.1, 0.25, 1),
+                  border-color var(--duration-normal) cubic-bezier(0.25, 0.1, 0.25, 1),
+                  box-shadow var(--duration-normal) cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+    .bento-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(84, 179, 194, 0.35);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    }
+
+    /* Process step hover */
+    .process-step {
+      transition: transform var(--duration-normal) cubic-bezier(0.25, 0.1, 0.25, 1),
+                  border-color var(--duration-normal) cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+    .process-step:hover {
+      transform: translateY(-3px);
+      border-color: rgba(84, 179, 194, 0.3);
+    }
+
+    /* Submit button pulse */
+    .submit-btn {
+      background: var(--glass-btn-bg);
+      border: 1px solid var(--glass-btn-border);
+      backdrop-filter: blur(28px) saturate(240%) brightness(1.15);
+      -webkit-backdrop-filter: blur(28px) saturate(240%) brightness(1.15);
+      box-shadow: 0 8px 32px var(--material-shadow), inset 0 1px 0 rgba(255,255,255,0.2);
+      position: relative;
+      overflow: hidden;
+      transition: all 300ms ease;
+    }
+    .submit-btn::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.04) 60%, transparent 100%);
+      opacity: 0;
+      transition: opacity 300ms ease;
+    }
+    .submit-btn:hover::after { opacity: 1; }
+    .submit-btn:hover {
+      border-color: var(--glass-btn-border-hover);
+      box-shadow: 0 12px 40px var(--material-shadow-hover), inset 0 1px 0 rgba(255,255,255,0.28);
+    }
+
+    /* Reusable glass button class — apply across all CTAs */
+    .btn-glass {
+      background: var(--glass-btn-bg);
+      border: 1px solid var(--glass-btn-border);
+      backdrop-filter: blur(28px) saturate(240%) brightness(1.15);
+      -webkit-backdrop-filter: blur(28px) saturate(240%) brightness(1.15);
+      box-shadow: 0 8px 32px var(--material-shadow), inset 0 1px 0 rgba(255,255,255,0.2);
+      color: var(--color-text-primary);
+      transition: all 300ms ease;
+    }
+    .btn-glass:hover {
+      background: var(--glass-btn-bg-hover);
+      border-color: var(--glass-btn-border-hover);
+      box-shadow: 0 12px 40px var(--material-shadow-hover), inset 0 1px 0 rgba(255,255,255,0.28);
+    }
+    .btn-glass.btn-filled {
+      color: #fff;
+      background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dim));
+      border-color: var(--color-primary);
+    }
+    .btn-glass.btn-filled:hover {
+      background: linear-gradient(135deg, var(--color-primary-hover), var(--color-primary));
+      border-color: var(--color-primary-hover);
+      box-shadow: 0 12px 40px var(--material-shadow-hover), inset 0 1px 0 rgba(255,255,255,0.28);
+    }
+
+    /* Global focus-visible styles for accessibility */
+    *:focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 2px;
+    }
+    a:focus-visible, button:focus-visible, [role="button"]:focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 2px;
+    }
+
+    @font-face {
+      font-family: "Oxido Eroded";
+      src: url("/assets/fonts/OXIDO-Eroded-FFP.ttf") format("truetype");
+      font-weight: 400;
+      font-display: swap;
+    }
+
+    /* Brand CSS variables + Design Tokens */
+    :root {
+      /* New blue-based color palette */
+      --color-primary: #3B82F6;
+      --color-primary-hover: #60A5FA;
+      --color-primary-light: #93C5FD;
+      --color-primary-dim: #2563EB;
+      --color-accent: #1E3A8A;
+
+      --color-secondary: #FFFFFF;
+      --color-background: #02040A;
+      --color-surface: #0F172A;
+      --color-surface-hover: #1E293B;
+
+      --color-text-primary: #FFFFFF;
+      --color-text-secondary: #A1A1AA;
+      --color-border: #27272A;
+
+      /* Semantic aliases for existing references */
+      --color-primary: var(--color-primary);
+      --color-primary-hover: var(--color-primary-hover);
+      --color-primary: var(--color-primary-light);
+      --color-primary-dim: var(--color-primary-dim);
+
+      /* Surface colors */
+      --color-bg-primary: var(--color-background);
+      --color-bg-card: var(--color-surface);
+      --color-bg-card-hover: var(--color-surface-hover);
+      --color-border-subtle: var(--color-border);
+
+      /* Particle colors (canvas animation) — using new palette */
+      --particle-color-1: var(--color-primary);
+      --particle-color-2: var(--color-primary-light);
+      --particle-color-3: var(--color-secondary);
+      --particle-color-4: var(--color-accent);
+
+      /* Animation Timing Tokens */
+      --duration-slower: 1.2s;
+      --duration-slowest: 2s;
+      --duration-logo-spin: 20s;
+
+      /* Animation Easing Tokens */
+      --ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-cinematic: 'M0,0 C0.16,0.04 0.28,0.12 0.4,0.2 0.5,0.28 0.58,0.36 0.64,0.44 0.7,0.52 0.76,0.62 0.82,0.74 0.88,0.86 0.92,0.94 0.96,1 1,1';
+      --ease-power2-out: power2.out;
+
+      /* Particle System Tokens */
+      --particle-spawn-interval: 800ms;
+      --particle-burst-chance: 0.15;
+      --particle-burst-count: 12;
+      --particle-normal-count: 3;
+      --particle-burst-speed-min: 2;
+      --particle-burst-speed-max: 6;
+      --particle-normal-speed-min: 0.5;
+      --particle-normal-speed-max: 2;
+      --particle-burst-life-min: 0.8;
+      --particle-burst-life-max: 1.4;
+      --particle-normal-life-min: 1.5;
+      --particle-normal-life-max: 3;
+      --particle-burst-size-min: 2;
+      --particle-burst-size-max: 5;
+      --particle-normal-size-min: 1;
+      --particle-normal-size-max: 3;
+
+      /* Canvas Logo Animation Tokens */
+      --canvas-logo-scale: 0.8;
+      --canvas-phase-speed: 0.3;
+      --canvas-rotation-lerp: 0.02;
+      --canvas-glow-pulse-amplitude: 0.3;
+      --canvas-glow-base-radius: 200;
+      --canvas-glow-opacity: 0.15;
+
+      /* Rotation Timeline Durations (seconds) */
+      --rotation-phase-1-duration: 4;
+      --rotation-phase-2-duration: 5;
+      --rotation-phase-3-duration: 3.5;
+      --rotation-phase-4-duration: 4;
+
+      /* Rotation Timeline Values */
+      --rotation-phase-1-x: 0.15;
+      --rotation-phase-1-y: -0.2;
+      --rotation-phase-2-x: -0.1;
+      --rotation-phase-2-y: 0.15;
+      --rotation-phase-3-x: 0.08;
+      --rotation-phase-3-y: -0.05;
+      --rotation-phase-4-x: 0;
+      --rotation-phase-4-y: 0;
+
+      /* ScrollTrigger Tokens */
+      --parallax-y-percent: 18;
+      --parallax-scrub: 1.5;
+      --section-trigger-start: top 85%;
+      --stats-trigger-start: top 70%;
+
+      /* Preloader Tokens */
+      --preloader-fade-duration: 500ms;
+      --preloader-hide-delay: 300ms;
+      --preloader-spin-duration: 1.5s;
+
+      /* Image Loading Tokens */
+      --image-fade-duration: 500ms;
+
+      /* Hero Video Filter Tokens */
+      --hero-video-saturate: 0.7;
+      --hero-video-brightness: 0.85;
+      --hero-video-contrast: 1.1;
+
+      /* Logo Video Filter Tokens */
+      --logo-video-brightness: 1.25;
+      --logo-video-contrast: 1.1;
+
+      /* Scroll Cue Tokens */
+      --scroll-cue-y-offset: 12px;
+      --scroll-cue-opacity-min: 0.6;
+      --scroll-cue-opacity-max: 1;
+
+      /* Layout Tokens */
+      --logo-crop-size: 40px;
+      --logo-crop-radius: 8px;
+      --logo-crop-img-height: 200%;
+      --logo-crop-img-left: -15%;
+      --logo-crop-img-scale: 1.4;
+      --logo-crop-sm-size: 36px;
+      --hero-logo-max-width: 600px;
+      --hero-logo-max-height: 600px;
+      --hero-logo-max-height-mobile: 350px;
+
+      /* ===== Apple Liquid Glass Material Tokens ===== */
+      --material-bg: rgba(15, 23, 42, 0.6);
+      --material-bg-hover: rgba(15, 23, 42, 0.8);
+      --material-bg-active: rgba(15, 23, 42, 0.5);
+      --material-border: rgba(59, 130, 246, 0.15);
+      --material-border-hover: rgba(59, 130, 246, 0.35);
+      --material-blur: blur(20px) saturate(180%);
+      --material-blur-light: blur(10px) saturate(150%);
+      --material-shadow: 0 4px 24px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      --material-shadow-hover: 0 8px 32px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+
+      /* Glass button states */
+      --glass-btn-bg: linear-gradient(135deg, rgba(59,130,246,0.35), rgba(30,58,138,0.25));
+      --glass-btn-bg-hover: linear-gradient(135deg, rgba(59,130,246,0.50), rgba(30,58,138,0.40));
+      --glass-btn-bg-active: linear-gradient(135deg, rgba(59,130,246,0.22), rgba(30,58,138,0.15));
+      --glass-btn-border: rgba(59,130,246,0.6);
+      --glass-btn-border-hover: rgba(96,165,250,0.85);
+      --glass-btn-text: #000;
+
+      /* Optical Typography Tokens (Apple size-specific tracking) */
+      --tracking-display-xl: -0.03em;   /* 72px+ */
+      --tracking-display-lg: -0.025em;  /* 48-72px */
+      --tracking-display-md: -0.02em;   /* 32-48px */
+      --tracking-display-sm: -0.01em;   /* 24-32px */
+      --tracking-body: 0em;             /* 16px */
+      --tracking-label: 0.02em;         /* 12-14px uppercase */
+      --tracking-mono: 0.15em;          /* mono labels */
+
+      --leading-tight: 1.02;
+      --leading-snug: 1.1;
+      --leading-normal: 1.5;
+      --leading-relaxed: 1.65;
+
+      --font-display: 'Inter', system-ui, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --font-serif: 'Playfair Display', serif;
+
+      /* Spring Motion Tokens (Apple fluid motion) */
+      --spring-critical-duration: 0.4s;
+      --spring-momentum-duration: 0.4s;
+      --spring-gentle-duration: 0.6s;
+      --spring-critical-bounce: 0;
+      --spring-momentum-bounce: 0.2;
+
+      /* Duration tokens (refined) */
+      --duration-instant: 0.1s;
+      --duration-fast: 0.2s;
+      --duration-normal: 0.35s;
+      --duration-slow: 0.5s;
+      --duration-cinematic: 0.8s;
+
+      /* Spacing Scale (8pt rhythm) */
+      --space-1: 4px;
+      --space-2: 8px;
+      --space-3: 12px;
+      --space-4: 16px;
+      --space-5: 20px;
+      --space-6: 24px;
+      --space-8: 32px;
+      --space-10: 40px;
+      --space-12: 48px;
+      --space-16: 64px;
+      --space-20: 80px;
+      --space-24: 96px;
+
+      /* Glass input states */
+      --input-bg: rgba(0, 0, 0, 0.3);
+      --input-bg-focus: rgba(0, 0, 0, 0.4);
+      --input-border: var(--material-border);
+      --input-border-focus: var(--color-primary);
+      --input-blur: blur(10px);
+    }
+
+    /* Cropped logo container */
+    .logo-crop {
+      width: var(--logo-crop-size);
+      height: var(--logo-crop-size);
+      overflow: hidden;
+      border-radius: var(--logo-crop-radius);
+      background: var(--color-bg-primary);
+      flex-shrink: 0;
+    }
+    .logo-crop img {
+      width: auto;
+      height: var(--logo-crop-img-height);
+      position: relative;
+      left: var(--logo-crop-img-left);
+      top: 50%;
+      transform: translateY(-50%) scale(var(--logo-crop-img-scale));
+    }
+    .logo-crop-sm {
+      width: var(--logo-crop-sm-size);
+      height: var(--logo-crop-sm-size);
+    }
+
+    /* Animated Logo Canvas */
+    #animated-logo-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    .hero-logo-container {
+      position: relative;
+      width: 100%;
+      max-width: var(--hero-logo-max-width);
+      height: 100%;
+      max-height: var(--hero-logo-max-height);
+    }
+    @media (max-width: 767px) {
+      .hero-logo-container { max-height: var(--hero-logo-max-height-mobile); }
+    }
+
+    /* Reduced motion fallback */
+    @media (prefers-reduced-motion: reduce) {
+      #animated-logo-canvas { display: none; }
+      .reduced-motion-fallback { display: flex !important; }
+      .scroll-cue { animation: none !important; }
+    }
+
+    /* Scroll indicator cue */
+    @keyframes scrollCue {
+      0% { transform: translateY(0); opacity: var(--scroll-cue-opacity-min); }
+      50% { transform: translateY(var(--scroll-cue-y-offset)); opacity: var(--scroll-cue-opacity-max); }
+      100% { transform: translateY(0); opacity: var(--scroll-cue-opacity-min); }
+    }
+    .scroll-cue {
+      animation: scrollCue 2.4s var(--ease-standard) infinite;
+    }
+
+    /* Cinematic section divider line */
+    .cinematic-divider {
+      transform-origin: left center;
+      transform: scaleX(0);
+    }
+
+    /* Work card image wrappers — for parallax unfold */
+    .work-card-img {
+      transform: scale(1.0);
+    }
+
+    /* ============================================================
+       RECENT WORK IMAGES — CINEMATIC SLOW ZOOM
+       All project card images get a deliberate 8-second push-in on hover
+       ============================================================ */
+    #work .grid > a > div > img,
+    section#work img {
+      transition: transform 8s cubic-bezier(0.25, 0.1, 0.25, 1) !important;
+    }
+    #work .grid > a:hover > div > img,
+    section#work a:hover img {
+      transform: scale(1.30) !important;
+    }
+
+    /* Team portraits — subtle hover zoom (5s / 1.08×) */
+    .team-portrait {
+      transition: transform 5s cubic-bezier(0.25, 0.1, 0.25, 1) !important;
+    }
+    .team-card:hover .team-portrait,
+    #team .grid > div:hover .team-portrait {
+      transform: scale(1.08) !important;
+    }
+
+    /* Testimonial card float parallax base */
+    .testimonial-card {
+      will-change: transform;
+    }
+
+    /* Process number circle — stamp-in target */
+    .process-number {
+      transform-origin: center;
+    }
+
+    /* Section labels get a subtle draw-in underline */
+    .section-label-line {
+      display: inline-block;
+      transform-origin: left center;
+      transform: scaleX(0);
+      transition: transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .section-label-line.is-in {
+      transform: scaleX(1);
+    }
+
+    /* Slow logo spin */
+    @keyframes logoSpin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    .logo-spin {
+      animation: logoSpin var(--duration-logo-spin) linear infinite;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .logo-spin { animation: none; }
+
+      /* Disable transform-based animations */
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        transform: none !important;
+      }
+
+      .scroll-cue { display: none; }
+      #animated-logo-canvas { display: none; }
+      .reduced-motion-fallback { display: flex !important; }
+    }
+  </style>
+</head>
+<body class="bg-[var(--color-background)] text-white antialiased">
+
+  <!-- Skip to main content -->
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[var(--color-primary)] focus:text-black focus:font-medium focus:rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-offset-2 focus:ring-offset-black">
+    Skip to main content
+  </a>
+
+  <!-- Page title for heading hierarchy (visually hidden) -->
+  <h1 class="sr-only">S&S Innovix — Digital Development Agency</h1>
+
+  <!-- Premium Preloader -->
+  <div id="preloader" class="fixed inset-0 z-[9999] bg-[var(--color-background)] flex items-center justify-center transition-opacity duration-500">
+    <div class="text-center">
+      <div class="relative w-24 h-24 mx-auto mb-6">
+        <div class="absolute inset-0 rounded-full border-[2px] border-[var(--color-primary)] border-t-transparent animate-spin" style="animation-duration:var(--preloader-spin-duration)"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <span class="text-[var(--color-primary)] text-2xl font-bold tracking-wider">S&S</span>
+        </div>
+      </div>
+      <p class="text-[13px] font-light tracking-[0.2em] text-[var(--color-primary)] uppercase">Crafted with care</p>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 z-50" style="background: var(--material-bg); backdrop-filter: var(--material-blur); border-bottom: 1px solid var(--material-border);">
+    <div class="mx-auto flex h-20 max-w-[1200px] items-center justify-between px-6 lg:px-8">
+      <!-- Logo - cropped to hex icon only + HTML text -->
+      <a href="#" class="flex items-center gap-3" aria-label="S&S Innovix Home">
+        <video autoplay loop muted playsinline class="logo-spin w-10 h-10 object-cover mix-blend-screen rounded-lg" style="filter: brightness(var(--logo-video-brightness)) contrast(var(--logo-video-contrast));" aria-hidden="true">
+          <source src="/logo.mp4" type="video/mp4" />
+        </video>
+        <span class="text-[16px] font-medium tracking-[0.02em] text-white hidden sm:inline">S&S Innovix</span>
+      </a>
+
+      <div class="hidden md:flex items-center gap-10">
+        <a href="#services" class="text-[14px] font-medium tracking-[var(--tracking-label)] text-white/70 transition-colors duration-[var(--duration-fast)] hover:text-white">Services</a>
+        <a href="#work" class="text-[14px] font-medium tracking-[var(--tracking-label)] text-white/70 transition-colors duration-[var(--duration-fast)] hover:text-white">Work</a>
+        <a href="#process" class="text-[14px] font-medium tracking-[var(--tracking-label)] text-white/70 transition-colors duration-[var(--duration-fast)] hover:text-white">Process</a>
+        <a href="#testimonials" class="text-[14px] font-medium tracking-[var(--tracking-label)] text-white/70 transition-colors duration-[var(--duration-fast)] hover:text-white">Testimonials</a>
+      </div>
+
+      <!-- CTA - Glassmorphism primary pill -->
+      <a href="#contact" class="btn-glass btn-filled rounded-[9999px] px-6 py-2.5 text-[14px] font-medium shadow-[var(--material-shadow)] transition-all duration-[var(--duration-normal)] hover:tracking-wider hover:scale-[1.02] hover:shadow-[var(--material-shadow-hover)] active:scale-[0.97]">
+        Start a project
+      </a>
+
+      <button class="md:hidden text-white p-2 rounded-lg hover:bg-white/10 transition-colors duration-[var(--duration-fast)]" aria-label="Menu" style="min-width: 44px; min-height: 44px;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero with Background Video -->
+  <section class="relative flex min-h-screen items-center justify-center overflow-hidden">
+    <!-- Hero background video -->
+    <video autoplay playsinline preload="metadata" muted poster="/assets/logo-icon-isolated.png" class="hero-video absolute inset-0 w-full h-full object-cover -z-20" style="filter: saturate(var(--hero-video-saturate)) brightness(var(--hero-video-brightness)) contrast(var(--hero-video-contrast)); will-change: transform; transform: translateZ(0);">
+      <source src="/herovideo.mp4" type="video/mp4" />
+    </video>
+
+    <!-- Dark overlay for text contrast -->
+    <div class="absolute inset-0 -z-10" style="background: radial-gradient(ellipse at center, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.8) 100%);"></div>
+
+    <!-- Animated Logo Canvas -->
+    <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+      <div class="hero-logo-container">
+        <canvas id="animated-logo-canvas" aria-hidden="true"></canvas>
+        <!-- Reduced motion fallback -->
+        <div class="reduced-motion-fallback hidden flex items-center justify-center">
+          <picture>
+            <source srcset="/assets/logo-icon-isolated-200-BtzVvHDn.webp" type="image/webp">
+            <img src="/assets/logo-icon-isolated.png" alt="S&S Innovix" class="max-w-[400px] h-auto" />
+          </picture>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero content -->
+    <div class="relative z-10 mx-auto max-w-[1200px] px-6 lg:px-8 pt-24 pb-24 text-center">
+      <!-- Brand lockup -->
+      <div class="flex flex-col leading-none mb-6 hero-brand-lockup" style="font-family: 'Oxido Eroded', system-ui, sans-serif;" aria-label="S&S Innovix">
+        <span class="block" style="font-size: clamp(3.5rem, 12vw, 9rem); line-height: var(--leading-tight); letter-spacing: var(--tracking-display-xl); font-weight: 700; color: var(--color-primary);">S & S</span>
+        <span class="block" style="font-size: clamp(4rem, 14vw, 11rem); line-height: var(--leading-tight); letter-spacing: var(--tracking-display-lg); font-weight: 700; color: transparent; background: linear-gradient(90deg, #fff, var(--color-primary), #fff); -webkit-background-clip: text; background-clip: text;">I N N O V I X</span>
+      </div>
+
+      <!-- Tagline -->
+      <p class="font-mono text-lg sm:text-xl tracking-widest uppercase text-[rgba(245,245,240,0.7)] mb-10 hero-tagline" style="letter-spacing: var(--tracking-mono);">>_ DIGITAL DEVELOPMENT AGENCY</p>
+
+      <h2 class="hero-headline mx-auto max-w-4xl text-[54px] font-light leading-[var(--leading-snug)] tracking-[var(--tracking-display-md)] text-white md:text-[72px] lg:text-[84px]">
+        Your vision, made <span class="serif-accent font-medium gradient-text">reality</span>.
+      </h2>
+
+      <p class="hero-subhead mx-auto mt-8 max-w-2xl text-lg font-light leading-[var(--leading-relaxed)] tracking-[var(--tracking-body)] text-white/70 md:text-xl">
+        Premium landing pages, end-to-end applications, and production-ready updates for the local businesses that move the world forward.
+      </p>
+
+      <div class="hero-cta mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <a href="#contact" class="btn-glass btn-filled rounded-[9999px] px-8 py-3.5 text-[15px] font-medium shadow-[var(--material-shadow)] transition-all duration-[var(--duration-normal)] hover:tracking-wider hover:scale-[1.02] hover:shadow-[var(--material-shadow-hover)] active:scale-[0.97]">Start a project</a>
+        <a href="#work" class="btn-glass rounded-[9999px] px-8 py-3.5 text-[15px] font-medium shadow-[var(--material-shadow)] transition-all duration-[var(--duration-normal)] hover:tracking-wider hover:scale-[1.02] hover:shadow-[var(--material-shadow-hover)] active:scale-[0.97]">View case studies</a>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 scroll-cue" aria-hidden="true">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-white/40"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="relative bg-[var(--color-background)] py-24 md:py-32">
+    <div class="mx-auto max-w-[1200px] px-6 lg:px-8">
+      <p class="mb-4 text-[11px] font-medium uppercase tracking-[0.07em] text-white/40">What we do</p>
+      <h2 class="mb-16 text-[40px] font-light leading-[1.1] tracking-[-0.02em] text-white md:text-[54px]">
+        End-to-end applications <span class="serif-accent font-normal gradient-text">built</span> for <span class="serif-accent font-normal gradient-text">scale</span>.
+      </h2>
+      <div class="grid gap-5 md:grid-cols-6 auto-rows-[minmax(180px,auto)]">
+        <!-- Feature 1 - Landing Pages - taller card (spans 2 rows) -->
+        <div class="group bento-card relative rounded-[14px] p-8 md:p-10 md:col-span-3 md:row-span-2" style="background: var(--material-bg); backdrop-filter: var(--material-blur); border: 1px solid var(--material-border);">
+          <div class="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[var(--color-primary)]/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div class="mb-8 flex h-14 w-14 items-center justify-center rounded-2xl" style="background: var(--glass-btn-bg); border: 1px solid var(--glass-btn-border);">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18M9 3v18"/></svg>
+          </div>
+          <h3 class="text-[18px] font-medium tracking-[-0.01em] text-white mb-3">Premium Landing Pages</h3>
+          <p class="text-[14px] font-light leading-relaxed text-white/60 max-w-sm">High-performance, conversion-focused pages that load in under a second and look deliberately considered. No templates.</p>
+          <div class="mt-8 inline-flex items-center gap-2 text-[13px] font-medium tracking-[0.02em] text-[var(--color-primary)] opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            Learn more
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+        <!-- Feature 2 - Apps (spans 3 cols) -->
+        <div class="group bento-card relative rounded-[14px] p-8 md:p-10 md:col-span-3" style="background: var(--material-bg); backdrop-filter: var(--material-blur); border: 1px solid var(--material-border);">
+          <div class="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[var(--color-primary)]/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div class="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl" style="background: var(--glass-btn-bg); border: 1px solid var(--glass-btn-border);">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </div>
+          <h3 class="text-[18px] font-medium tracking-[-0.01em] text-white mb-2">End-to-End Applications</h3>
+          <p class="text-[14px] font-light leading-relaxed text-white/60">Full-stack platforms engineered for scale — from database architecture to polished interface. Ship once, grow infinitely.</p>
+        </div>
+        <!-- Feature 3 - Updates -->
+        <div class="group bento-card relative rounded-[14px] p-8 md:p-10 md:col-span-3" style="background: var(--material-bg); backdrop-filter: var(--material-blur); border: 1px solid var(--material-border);">
+          <div class="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[var(--color-primary)]/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div class="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl" style="background: var(--glass-btn-bg); border: 1px solid var(--glass-btn-border);">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          </div>
+          <h3 class="text-[18px] font-medium tracking-[-0.01em] text-white mb-2">Production-Ready Updates</h3>
+          <p class="text-[14px] font-light leading-relaxed text-white/60">Small businesses deserve the same quality as big companies. We maintain, modernize, and deploy updates that just work.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Work -->
+  <section id="work" class="bg-[var(--color-background)] py-24 md:py-32">
+    <div class="mx-auto max-w-[1200px] px-6 lg:px-8">
+      <p class="mb-4 text-[11px] font-medium uppercase tracking-[0.07em] text-white/40">Selected work</p>
+      <h2 class="mb-16 text-[40px] font-light leading-[1.1] tracking-[-0.02em] text-white md:text-[54px]">
+        Recent <span class="serif-accent font-normal gradient-text ml-2">projects</span>.
+      </h2>
+      <div class="grid gap-8 md:grid-cols-2">
+        <a href="#" class="group relative overflow-hidden rounded-[10px]">
+          <div class="aspect-[4/3] overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=1200&q=80" alt="Baker & Vine" class="h-full w-full object-cover group-hover:scale-[1.30]" style="filter: saturate(0.4) brightness(0.85) contrast(1.05); transition: transform 10s ease-out !important;" />
+          </div>
+          <div class="absolute top-4 right-4">
+            <span class="inline-block rounded-[9999px] px-4 py-1.5 text-[11px] font-medium uppercase tracking-[0.05em] text-white backdrop-blur-[20px] saturate-[1.4]" style="background: rgba(200,200,200,0.08); border: 1px solid rgba(176,141,106,0.3); box-shadow: 0 2px 8px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.06);">Web App</span>
+          </div>
+          <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/90 via-black/10 to-transparent">
+            <div class="w-full h-[1px] bg-gradient-to-r from-transparent via-[var(--color-primary)] to-transparent mb-4 group-hover:scale-x-100 group-hover:origin-left transition-transform duration-500 origin-right scale-x-0"></div>
+            <p class="text-[13px] font-light text-[#999]">Full-stack ordering system for a restaurant group</p>
+          </div>
+          <div class="absolute top-4 left-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+            <div class="flex h-9 w-9 items-center justify-center rounded-full" style="background: rgba(200,200,200,0.08); border: 1px solid rgba(176,141,106,0.3); backdrop-filter: blur(20px) saturate(1.4); box-shadow: 0 2px 8px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.06);">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+            </div>
+          </div>
+        </a>
+        <a href="#" class="group relative overflow-hidden rounded-[10px]">
+          <div class="aspect-[4/3] overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=80" alt="Apex Fitness" class="h-full w-full object-cover group-hover:scale-[1.30]" style="filter: saturate(0.4) brightness(0.85) contrast(1.05); transition: transform 10s ease-out !important;" />
+          </div>
+          <div class="absolute top-4 right-4">
+            <span class="inline-block rounded-[9999px] px-4 py-1.5 text-[11px] font-medium uppercase tracking-[0.05em] text-white backdrop-blur-[20px] saturate-[1.4]" style="background: rgba(200,200,200,0.08); border: 1px solid rgba(176,141,106,0.3); box-shadow: 0 2px 8px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.06);">Landing Page</span>
+          </div>
+          <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/90 via-black/10 to-transparent">
+            <div class="w-full h-[1px] bg-gradient-to-r from-transparent via-[var(--color-primary)] to-transparent mb-4 group-hover:scale-x-100 group-hover:origin-left transition-transform duration-500 origin-right scale-x-0"></div>
+            <p class="text-[13px] font-light text-[#999]">Landing page for a boutique fitness studio opening</p>
+          </div>
+          <div class="absolute top-4 left-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+            <div class="flex h-9 w-9 items-center justify-center rounded-full" style="background: rgba(200,200,200,0.08); border: 1px solid rgba(176,141,106,0.3); backdrop-filter: blur(20px) saturate(1.4); box-shadow: 0 2px 8px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.06);">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+            </div>
+          </div>
+        </a>
+        <a href="#" class="group relative overflow-hidden rounded-[10px]">
+          <div class="aspect-[4/3] overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=1200&q=80" alt="Cedar & Oak" class="h-full w-full object-cover transition-transform duration-[10s] ease-out group-hover:scale-[1.30]" style="filter: saturate(0.4) brightness(0.85) contrast(1.05);" />
+          </div>
+          <div class="absolute top-4 right-4">
+            <span class="inline-block rounded-[9999px] px-4 py-1.5 text-[11px] font-medium uppercase tracking-[0.05em] text-white backdrop-blur-[20px] saturate-[1.4]" style="background: rgba(200,200,200,0.08); border: 1px solid rgba(176,141,106,0.3); box-shadow: 0 2px 8px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.06);">Production</span>
+          </div>
+          <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/90 via-black/10 to-transparent">
+            <div class="w-full h-[1px] bg-gradient-to-r from-transparent via-[var(--color-primary)] to-transparent mb-4 group-hover:scale-x-100 group-hover:origin-left transition-transform duration-500 origin-right scale-x-0"></div>
+            <p class="text-[13px] font-light text-[#999]">Performance overhaul of a local furniture store</p>
+          </div>
+          <div class="absolute top-4 left-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+            <div class="flex h-9 w-9 items-center justify-center rounded-full" style="background: rgba(200,200,200,0.08); border: 1px solid rgba(176,141,106,0.3); backdrop-filter: blur(20px) saturate(1.4); box-shadow: 0 2px 8px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.06);">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+            </div>
+          </div>
+        </a>
+        <a href="#" class="group relative overflow-hidden rounded-[10px]">
+          <div class="aspect-[4/3] overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1200&q=80" alt="Northlight Docs" class="h-full w-full object-cover transition-transform duration-[10s] ease-out group-hover:scale-[1.30]" style="filter: saturate(0.4) brightness(0.85) contrast(1.05);" />
+          </div>
+          <div class="absolute top-4 right-4">
+            <span class="inline-block rounded-[9999px] px-4 py-1.5 text-[11px] font-medium uppercase tracking-[0.05em] text-white backdrop-blur-[20px] saturate-[1.4]" style="background: rgba(200,200,200,0.08); border: 1px solid rgba(176,141,106,0.3); box-shadow: 0 2px 8px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.06);">Web App</span>
+          </div>
+          <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/90 via-black/10 to-transparent">
+            <div class="w-full h-[1px] bg-gradient-to-r from-transparent via-[var(--color-primary)] to-transparent mb-4 group-hover:scale-x-100 group-hover:origin-left transition-transform duration-500 origin-right scale-x-0"></div>
+            <p class="text-[13px] font-light text-[#999]">Internal tooling for a legal document automation firm</p>
+          </div>
+          <div class="absolute top-4 left-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+            <div class="flex h-9 w-9 items-center justify-center rounded-full" style="background: rgba(200,200,200,0.08); border: 1px solid rgba(176,141,106,0.3); backdrop-filter: blur(20px) saturate(1.4); box-shadow: 0 2px 8px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.06);">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="relative bg-[var(--color-background)] py-24 md:py-32">
+    <div class="relative z-10 mx-auto max-w-[800px] px-6 lg:px-8 text-center">
+      <h2 class="text-[40px] md:text-[54px] lg:text-[64px] font-light leading-[1.1] tracking-[-0.02em] text-white">
+        Ready to build <span class="serif-accent font-normal gradient-text">something exceptional</span>?
+      </h2>
+      <p class="mt-6 text-lg font-light leading-relaxed text-white/50 max-w-xl mx-auto">
+        Let's discuss your project. No templates, no compromise — just premium digital craft.
+      </p>
+      <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <a href="#contact" class="btn-glass btn-filled rounded-[9999px] px-8 py-3.5 text-[15px] font-medium shadow-[var(--material-shadow)] transition-all duration-[var(--duration-normal)] hover:tracking-wider hover:scale-[1.02] hover:shadow-[var(--material-shadow-hover)] active:scale-[0.97]">Start a project</a>
+        <a href="#work" class="btn-glass rounded-[9999px] px-8 py-3.5 text-[15px] font-medium shadow-[var(--material-shadow)] transition-all duration-[var(--duration-normal)] hover:tracking-wider hover:scale-[1.02] hover:shadow-[var(--material-shadow-hover)] active:scale-[0.97]">View our work</a>
+      </div>
+    </div>
+  </section>
+  <!-- Process Section -->
+  <section id="process" class="relative bg-[var(--color-background)] py-24 md:py-32">
+    <div class="mx-auto max-w-[1200px] px-6 lg:px-8">
+      <p class="mb-4 text-[11px] font-medium uppercase tracking-[0.07em] text-white/40">How we work</p>
+      <h2 class="mb-20 text-[40px] font-light leading-[1.1] tracking-[-0.02em] text-white md:text-[54px]">Our <span class="serif-accent font-normal gradient-text">craft</span> process</h2>
+      <div class="grid gap-8 md:grid-cols-3">
+        <div class="group process-step" style="background: var(--material-bg); backdrop-filter: var(--material-blur); border: 1px solid var(--material-border);">
+          <div class="w-14 h-14 mx-auto rounded-full flex items-center justify-center mb-6" style="background: var(--glass-btn-bg); border: 1px solid var(--glass-btn-border);"><span class="text-[var(--color-primary)] text-[18px] font-bold">01</span></div>
+          <h3 class="text-[18px] font-medium tracking-[-0.01em] text-white mb-4 text-center">Discover & Strategy</h3>
+          <p class="text-[14px] font-light text-white/70">Deep discovery — understanding your business, audience, and goals. This foundation shapes every decision that follows.</p>
+          <div class="mt-6 h-[1px] bg-gradient-to-r from-transparent via-[var(--color-primary)]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        </div>
+        <div class="group process-step" style="background: var(--material-bg); backdrop-filter: var(--material-blur); border: 1px solid var(--material-border);">
+          <div class="w-14 h-14 mx-auto rounded-full flex items-center justify-center mb-6" style="background: var(--glass-btn-bg); border: 1px solid var(--glass-btn-border);"><span class="text-[var(--color-primary)] text-[18px] font-bold">02</span></div>
+          <h3 class="text-[18px] font-medium tracking-[-0.01em] text-white mb-4 text-center">Design & Architecture</h3>
+          <p class="text-[14px] font-light text-white/70">From wireframes to database schema, we craft experiences that are both beautiful and built to scale. Every pixel and query has purpose.</p>
+          <div class="mt-6 h-[1px] bg-gradient-to-r from-transparent via-[var(--color-primary)]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        </div>
+        <div class="group process-step" style="background: var(--material-bg); backdrop-filter: var(--material-blur); border: 1px solid var(--material-border);">
+          <div class="w-14 h-14 mx-auto rounded-full flex items-center justify-center mb-6" style="background: var(--glass-btn-bg); border: 1px solid var(--glass-btn-border);"><span class="text-[var(--color-primary)] text-[18px] font-bold">03</span></div>
+          <h3 class="text-[18px] font-medium tracking-[-0.01em] text-white mb-4 text-center">Build & Test</h3>
+          <p class="text-[14px] font-light text-white/70">Clean, maintainable code with rigorous testing. Performance, security, and accessibility are baked in from day one.</p>
+          <div class="mt-6 h-[1px] bg-gradient-to-r from-transparent via-[var(--color-primary)]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        </div>
+        <div class="group process-step" style="background: var(--material-bg); backdrop-filter: var(--material-blur); border: 1px solid var(--material-border);">
+          <div class="w-14 h-14 mx-auto rounded-full flex items-center justify-center mb-6" style="background: var(--glass-btn-bg); border: 1px solid var(--glass-btn-border);"><span class="text-[var(--color-primary)] text-[18px] font-bold">04</span></div>
+          <h3 class="text-[18px] font-medium tracking-[-0.01em] text-white mb-4 text-center">Launch & Scale</h3>
+          <p class="text-[14px] font-light text-white/70">After launch, we handle the scaling — monitoring, optimizing, and helping your product grow.</p>
+          <div class="mt-6 h-[1px] bg-gradient-to-r from-transparent via-[var(--color-primary)]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="bg-[var(--color-background)] py-24 md:py-32">
+    <div class="mx-auto max-w-[1200px] px-6 lg:px-8">
+      <h2 class="mb-16 text-[40px] font-light leading-[1.1] tracking-[-0.02em] text-white md:text-[54px]">What our <span class="serif-accent font-normal gradient-text">clients</span> say</h2>
+      <div class="grid gap-5 md:grid-cols-3">
+        <div class="group relative rounded-[14px] p-8 transition-all duration-[var(--duration-normal)]" style="background: var(--material-bg); backdrop-filter: var(--material-blur); border: 1px solid var(--material-border);">
+          <div class="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[var(--color-primary)]/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <span class="text-[var(--color-primary)] text-[28px] font-serif leading-none block mb-3">"</span>
+          <p class="text-[14px] font-light leading-relaxed text-white/80">S&S Innovix transformed our online presence completely. The landing page they built generated 3x more qualified leads in the first month. Exceptional quality.</p>
+          <p class="mt-4 text-[12px] font-medium tracking-[0.02em] text-[var(--color-primary)]">— Restaurant Group CEO</p>
+        </div>
+        <div class="group relative rounded-[14px] p-8 transition-all duration-[var(--duration-normal)]" style="background: var(--material-bg); backdrop-filter: var(--material-blur); border: 1px solid var(--material-border);">
+          <div class="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[var(--color-primary)]/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <span class="text-[var(--color-primary)] text-[28px] font-serif leading-none block mb-3">"</span>
+          <p class="text-[14px] font-light leading-relaxed text-white/80">They delivered our app faster than promised and it outperforms our expectations. Our team productivity increased 40% with the custom dashboard they built.</p>
+          <p class="mt-4 text-[12px] font-medium tracking-[0.02em] text-[var(--color-primary)]">— Fitness Studio Founder</p>
+        </div>
+        <div class="group relative rounded-[14px] p-8 transition-all duration-[var(--duration-normal)]" style="background: var(--material-bg); backdrop-filter: var(--material-blur); border: 1px solid var(--material-border);">
+          <div class="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[var(--color-primary)]/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <span class="text-[var(--color-primary)] text-[28px] font-serif leading-none block mb-3">"</span>
+          <p class="text-[14px] font-light leading-relaxed text-white/80">The attention to detail is unmatched. Our e-commerce site now loads 2x faster and converts better. Worth every penny.</p>
+          <p class="mt-4 text-[12px] font-medium tracking-[0.02em] text-[var(--color-primary)]">— Furniture Store Owner</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Section -->
+  <section id="team" class="bg-[var(--color-background)] py-24 md:py-32">
+    <div class="mx-auto max-w-[1200px] px-6 lg:px-8 text-center">
+      <p class="mb-4 text-[11px] font-medium uppercase tracking-[0.07em] text-white/40">THE TEAM</p>
+      <h2 class="mb-16 text-[40px] font-light leading-[1.1] tracking-[-0.02em] text-white md:text-[54px]">People Behind <span class="serif-accent font-normal gradient-text">The Pixels</span></h2>
+      <div class="grid gap-8 md:grid-cols-2 max-w-3xl mx-auto">
+        <!-- Co-Founder Card -->
+        <div class="rounded-[10px] bg-[var(--color-bg-card)] p-8 flex flex-col items-center text-center">
+          <div class="h-80 w-auto aspect-[1086/1448] rounded-xl overflow-hidden mb-6 ring-2 ring-[var(--color-primary)]/40 bg-[var(--color-primary-dim)]" style="opacity:1">
+            <img
+              src="/assets/Profile images/Sandeep.png"
+              alt="Sandeep Silumula"
+              width="1086"
+              height="1448"
+              loading="eager"
+              decoding="async"
+              class="w-full h-full object-contain team-portrait"
+              style="image-rendering: -webkit-optimize-contrast; opacity:1 !important;"
+            />
+          </div>
+          <h3 class="text-[18px] font-medium text-white mb-1">Sandeep Silumula</h3>
+          <p class="text-[14px] text-white/50 uppercase tracking-wider">Co-Founder</p>
+        </div>
+        <!-- Co-Founder Card -->
+        <div class="rounded-[10px] bg-[var(--color-bg-card)] p-8 flex flex-col items-center text-center">
+          <div class="h-80 w-auto aspect-[1152/2048] rounded-xl overflow-hidden mb-6 ring-2 ring-[var(--color-primary)]/40 bg-[var(--color-primary-dim)]" style="opacity:1">
+            <img
+              src="/assets/Profile images/Sumith.jpeg"
+              alt="Sumith Shirodkar"
+              width="1152"
+              height="2048"
+              loading="eager"
+              decoding="async"
+              class="w-full h-full object-contain team-portrait"
+              style="image-rendering: -webkit-optimize-contrast; opacity:1 !important;"
+            />
+          </div>
+          <h3 class="text-[18px] font-medium text-white mb-1">Sumith Shirodkar</h3>
+          <p class="text-[14px] text-white/50 uppercase tracking-wider">Co-Founder</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faq" class="relative bg-[var(--color-background)] py-24 md:py-32">
+    <div class="mx-auto max-w-3xl px-6 lg:px-8">
+      <p class="mb-4 text-[11px] font-medium uppercase tracking-[0.07em] text-white/40">Got questions?</p>
+      <h2 class="mb-16 text-[40px] font-light leading-[1.1] tracking-[-0.02em] text-white md:text-[54px]">Frequently asked <span class="serif-accent font-normal gradient-text">questions</span></h2>
+      <div class="space-y-3">
+        <div class="faq-item rounded-[14px] overflow-hidden transition-all duration-[var(--duration-normal)]" style="background: var(--material-bg); backdrop-filter: var(--material-blur); border: 1px solid var(--material-border);">
+          <button class="faq-toggle w-full flex items-center justify-between p-6 text-left" data-faq-toggle aria-expanded="false">
+            <span class="text-[15px] font-medium text-white tracking-[var(--tracking-body)]">What makes S&S Innovix different?</span>
+            <svg class="faq-icon w-5 h-5 text-[var(--color-primary)] transition-transform duration-[var(--duration-normal)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-content hidden px-6 pb-6"><p class="text-[14px] font-light leading-relaxed text-white/70">We combine senior-level engineering with direct collaboration. Every project gets experienced developers working alongside you — no juniors, no templates.</p></div>
+        </div>
+        <div class="faq-item rounded-[14px] overflow-hidden transition-all duration-[var(--duration-normal)]" style="background: var(--material-bg); backdrop-filter: var(--material-blur); border: 1px solid var(--material-border);">
+          <button class="faq-toggle w-full flex items-center justify-between p-6 text-left" data-faq-toggle aria-expanded="false">
+            <span class="text-[15px] font-medium text-white tracking-[var(--tracking-body)]">How long does a typical project take?</span>
+            <svg class="faq-icon w-5 h-5 text-[var(--color-primary)] transition-transform duration-[var(--duration-normal)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-content hidden px-6 pb-6"><p class="text-[14px] font-light leading-relaxed text-white/70">Landing pages typically take 2-4 weeks. Full-stack applications range from 8-20 weeks. We'll give you a precise timeline during discovery.</p></div>
+        </div>
+        <div class="faq-item rounded-[14px] overflow-hidden transition-all duration-[var(--duration-normal)]" style="background: var(--material-bg); backdrop-filter: var(--material-blur); border: 1px solid var(--material-border);">
+          <button class="faq-toggle w-full flex items-center justify-between p-6 text-left" data-faq-toggle aria-expanded="false">
+            <span class="text-[15px] font-medium text-white tracking-[var(--tracking-body)]">Do you provide ongoing support?</span>
+            <svg class="faq-icon w-5 h-5 text-[var(--color-primary)] transition-transform duration-[var(--duration-normal)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-content hidden px-6 pb-6"><p class="text-[14px] font-light leading-relaxed text-white/70">Every project includes 30 days of complimentary support. After that, flexible maintenance plans keep your product at peak performance.</p></div>
+        </div>
+        <div class="faq-item rounded-[14px] overflow-hidden transition-all duration-[var(--duration-normal)]" style="background: var(--material-bg); backdrop-filter: var(--material-blur); border: 1px solid var(--material-border);">
+          <button class="faq-toggle w-full flex items-center justify-between p-6 text-left" data-faq-toggle aria-expanded="false">
+            <span class="text-[15px] font-medium text-white tracking-[var(--tracking-body)]">What's your pricing model?</span>
+            <svg class="faq-icon w-5 h-5 text-[var(--color-primary)] transition-transform duration-[var(--duration-normal)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-content hidden px-6 pb-6"><p class="text-[14px] font-light leading-relaxed text-white/70">Project-based with clear, upfront pricing. After discovery, we provide a detailed proposal with milestone payments. No hidden costs.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="relative bg-[var(--color-background)] py-24 md:py-32">
+    <div class="mx-auto max-w-[1200px] px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-16 items-start">
+        <!-- Contact Info -->
+        <div class="pr-12 lg:pr-16">
+          <p class="mb-4 text-[11px] font-medium uppercase tracking-[0.07em] text-white/40">Get in touch</p>
+          <h2 class="mb-8 text-[40px] font-light leading-[1.1] tracking-[-0.02em] text-white md:text-[54px]">Let's build something <span class="serif-accent font-normal gradient-text">together</span>.</h2>
+          <p class="text-[16px] font-light leading-relaxed text-white/70 mb-12 max-w-lg">Have a project in mind? We'd love to hear about it. Reach out and we'll get back to you within 24 hours.</p>
+
+          <!-- Contact Details -->
+          <div class="space-y-6">
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0" style="background: var(--glass-btn-bg); border: 1px solid var(--glass-btn-border);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <div>
+                <p class="text-[11px] font-medium uppercase tracking-[0.05em] text-white/40">Email</p>
+                <a href="mailto:ssinnovix@gmail.com" class="text-[16px] font-light text-white hover:text-[var(--color-primary)] transition-colors">ssinnovix@gmail.com</a>
+              </div>
+            </div>
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0" style="background: var(--glass-btn-bg); border: 1px solid var(--glass-btn-border);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
+              <div>
+                <p class="text-[11px] font-medium uppercase tracking-[0.05em] text-white/40">Response Time</p>
+                <p class="text-[16px] font-light text-white/80">Within 24 hours</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 rounded-full flex items-center justify-center bg-[var(--color-primary-dim)] border border-[var(--color-primary)]/30 flex-shrink-0">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div>
+                <p class="text-[11px] font-medium uppercase tracking-[0.05em] text-white/40">Location</p>
+                <p class="text-[16px] font-light text-white/80">Remote-first, worldwide</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="rounded-[16px] p-8 md:p-10 transition-all duration-[var(--duration-normal)]" style="background: var(--material-bg); backdrop-filter: var(--material-blur); border: 1px solid var(--material-border);">
+          <form id="contact-form" action="https://formspree.io/f/mvkpndvw" method="POST" class="space-y-6" novalidate>
+            <div class="grid sm:grid-cols-2 gap-6">
+              <div>
+                <label for="name" class="block text-[11px] font-medium uppercase tracking-[var(--tracking-label)] text-white/50 mb-2">Name</label>
+                <input type="text" id="name" name="name" required class="contact-input w-full rounded-[8px] px-4 py-3 text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent transition-all" placeholder="Your name">
+              </div>
+              <div>
+                <label for="email" class="block text-[11px] font-medium uppercase tracking-[var(--tracking-label)] text-white/50 mb-2">Email</label>
+                <input type="email" id="email" name="email" required class="contact-input w-full rounded-[8px] px-4 py-3 text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent transition-all" placeholder="your@email.com">
+              </div>
+            </div>
+            <div>
+              <label for="company" class="block text-[11px] font-medium uppercase tracking-[var(--tracking-label)] text-white/50 mb-2">Company (optional)</label>
+              <input type="text" id="company" name="company" class="contact-input w-full rounded-[8px] px-4 py-3 text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent transition-all" placeholder="Company name">
+            </div>
+            <div>
+              <label for="project-type" class="block text-[11px] font-medium uppercase tracking-[var(--tracking-label)] text-white/50 mb-2">Project Type</label>
+              <select id="project-type" name="projectType" required class="contact-input w-full rounded-[8px] px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent transition-all appearance-none">
+                <option value="" disabled selected>Select project type</option>
+                <option value="landing-page">Landing Page</option>
+                <option value="web-app">Web Application</option>
+                <option value="mobile-app">Mobile App</option>
+                <option value="ecommerce">E-Commerce</option>
+                <option value="dashboard">Dashboard / SaaS</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div>
+              <label for="budget" class="block text-[11px] font-medium uppercase tracking-[var(--tracking-label)] text-white/50 mb-2">Budget Range</label>
+              <select id="budget" name="budget" required class="contact-input w-full rounded-[8px] px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] transition-all appearance-none">
+                <option value="" disabled selected>Select budget range</option>
+                <option value="15k-30k">$15K - $30K</option>
+                <option value="30k-50k">$30K - $50K</option>
+                <option value="50k-75k">$50K - $75K</option>
+                <option value="75k-100k">$75K - $100K</option>
+                <option value="100k-plus">$100K+</option>
+              </select>
+            </div>
+            <div>
+              <label for="message" class="block text-[11px] font-medium uppercase tracking-[var(--tracking-label)] text-white/50 mb-2">Project Details</label>
+              <textarea id="message" name="message" required rows="5" class="contact-input w-full rounded-[8px] px-4 py-3 text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] transition-all resize-none" placeholder="Tell us about your project, goals, timeline, and any specific requirements..."></textarea>
+            </div>
+            <button type="submit" class="btn-glass btn-filled w-full md:w-auto px-8 py-4 rounded-[9999px] font-medium tracking-[var(--tracking-label)] text-white shadow-[var(--material-shadow)] transition-all duration-[var(--duration-normal)] hover:tracking-wider hover:scale-[1.02] hover:shadow-[var(--material-shadow-hover)] active:scale-[0.97]">
+              <span class="relative z-10">Start a project</span>
+            </button>
+            <p class="text-[12px] font-light text-white/40 text-center md:text-left">By submitting, you agree to our <a href="#" class="underline hover:text-[var(--color-primary)]">Privacy Policy</a> and <a href="#" class="underline hover:text-[var(--color-primary)]">Terms of Service</a>.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-[var(--color-border-subtle)] bg-[var(--color-background)]">
+    <div class="mx-auto max-w-[1200px] px-6 lg:px-8 py-16">
+      <div class="flex flex-col items-center justify-between gap-8 md:flex-row">
+        <!-- Footer logo - isolated icon + text -->
+        <a href="#" class="flex items-center gap-3" aria-label="S&S Innovix Home">
+          <video autoplay loop muted playsinline class="logo-spin h-9 w-9 object-cover mix-blend-screen rounded-md" style="filter: brightness(var(--logo-video-brightness)) contrast(var(--logo-video-contrast));" aria-hidden="true">
+            <source src="/logo.mp4" type="video/mp4" />
+          </video>
+          <span class="text-[14px] font-medium tracking-[0.02em] text-white/90 hidden sm:inline">S&S Innovix</span>
+        </a>
+
+        <div class="flex items-center gap-8">
+          <a href="#services" class="text-[14px] font-light text-white/50 transition-colors hover:text-[var(--color-primary)]">Services</a>
+          <a href="#work" class="text-[14px] font-light text-white/50 transition-colors hover:text-[var(--color-primary)]">Work</a>
+        </div>
+      </div>
+      <div class="mt-16 text-center">
+        <p class="text-[54px] md:text-[64px] font-light tracking-[-0.02em] text-white/90">
+          Digital development, <span class="serif-accent font-normal gradient-text">shipped</span>.
+        </p>
+      </div>
+      <div class="mt-12 flex items-center justify-center gap-4">
+        <div class="h-[1px] w-24 bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+        <span class="text-[11px] font-medium uppercase tracking-[0.1em] text-white/30">S&S INNOVIX</span>
+        <div class="h-[1px] w-24 bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+      </div>
+      <div class="mt-8 text-center">
+        <p class="text-[13px] font-light text-white/20">&copy; 2026 S&S Innovix. All rights reserved.</p>
+      </div>
+    </div></footer>
+
+  <script>
+    // Animated Logo - GSAP + Canvas 2D Spark System
+    (function() {
+      const canvas = document.getElementById('animated-logo-canvas');
+      if (!canvas) return;
+
+      // Check reduced motion
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersReducedMotion) {
+        canvas.style.display = 'none';
+        document.querySelector('.reduced-motion-fallback')?.classList.remove('hidden');
+        return;
+      }
+
+      const ctx = canvas.getContext('2d');
+      const dpr = window.devicePixelRatio || 1;
+
+      // Read CSS custom properties for tokens
+      const getToken = (name, fallback) => getComputedStyle(document.documentElement).getPropertyValue(name).trim() || fallback;
+      const getTokenFloat = (name, fallback) => parseFloat(getToken(name, fallback));
+      const getTokenInt = (name, fallback) => parseInt(getToken(name, fallback), 10);
+
+      // Logo image - use optimized WebP
+      const logoImg = new Image();
+      logoImg.src = '/assets/logo-icon-isolated-200-BtzVvHDn.webp';
+      logoImg.crossOrigin = 'anonymous';
+
+      // Animation state
+      let rotationX = 0;
+      let rotationY = 0;
+      let targetRotationX = 0;
+      let targetRotationY = 0;
+      let phase = 0;
+      let logoLoaded = false;
+      let logoWidth = 600;
+      let logoHeight = 309; // 2854/1472 ratio
+
+      // Spark particles
+      const particles = [];
+      const colors = [
+        getToken('--particle-color-1', '#B08D6A'),
+        getToken('--particle-color-2', '#8E7B68'),
+        getToken('--particle-color-3', '#D4B896'),
+        getToken('--particle-color-4', '#8B6F55'),
+      ];
+
+      // GSAP CustomEase - cinematic heavy momentum
+      gsap.registerPlugin(CustomEase);
+      CustomEase.create('cinematic', getToken('--ease-cinematic', 'M0,0 C0.16,0.04 0.28,0.12 0.4,0.2 0.5,0.28 0.58,0.36 0.64,0.44 0.7,0.52 0.76,0.62 0.82,0.74 0.88,0.86 0.92,0.94 0.96,1 1,1'));
+
+      function resizeCanvas() {
+        const container = canvas.parentElement;
+        if (!container) return;
+        const rect = container.getBoundingClientRect();
+        canvas.width = rect.width * dpr;
+        canvas.height = rect.height * dpr;
+        canvas.style.width = rect.width + 'px';
+        canvas.style.height = rect.height + 'px';
+      }
+
+      function spawnSpark(count, cx, cy, burst = false) {
+        const burstCount = getTokenInt('--particle-burst-count', 12);
+        const normalCount = getTokenInt('--particle-normal-count', 3);
+        const burstSpeedMin = getTokenFloat('--particle-burst-speed-min', 2);
+        const burstSpeedMax = getTokenFloat('--particle-burst-speed-max', 6);
+        const normalSpeedMin = getTokenFloat('--particle-normal-speed-min', 0.5);
+        const normalSpeedMax = getTokenFloat('--particle-normal-speed-max', 2);
+        const burstLifeMin = getTokenFloat('--particle-burst-life-min', 0.8);
+        const burstLifeMax = getTokenFloat('--particle-burst-life-max', 1.4);
+        const normalLifeMin = getTokenFloat('--particle-normal-life-min', 1.5);
+        const normalLifeMax = getTokenFloat('--particle-normal-life-max', 3);
+        const burstSizeMin = getTokenFloat('--particle-burst-size-min', 2);
+        const burstSizeMax = getTokenFloat('--particle-burst-size-max', 5);
+        const normalSizeMin = getTokenFloat('--particle-normal-size-min', 1);
+        const normalSizeMax = getTokenFloat('--particle-normal-size-max', 3);
+
+        for (let i = 0; i < count; i++) {
+          const angle = burst ? (Math.PI * 2 * i) / burstCount : Math.random() * Math.PI * 2;
+          const speed = burst
+            ? burstSpeedMin + Math.random() * (burstSpeedMax - burstSpeedMin)
+            : normalSpeedMin + Math.random() * (normalSpeedMax - normalSpeedMin);
+          const life = burst
+            ? burstLifeMin + Math.random() * (burstLifeMax - burstLifeMin)
+            : normalLifeMin + Math.random() * (normalLifeMax - normalLifeMin);
+          particles.push({
+            x: cx,
+            y: cy,
+            vx: Math.cos(angle) * speed,
+            vy: Math.sin(angle) * speed,
+            life,
+            maxLife: life,
+            size: burst
+              ? burstSizeMin + Math.random() * (burstSizeMax - burstSizeMin)
+              : normalSizeMin + Math.random() * (normalSizeMax - normalSizeMin),
+            color: colors[Math.floor(Math.random() * colors.length)],
+          });
+        }
+      }
+
+      function updateParticles(delta) {
+        for (let i = particles.length - 1; i >= 0; i--) {
+          const p = particles[i];
+          p.x += p.vx * delta * 60;
+          p.y += p.vy * delta * 60;
+          p.vy += 0.02 * delta * 60;
+          p.vx *= 0.995;
+          p.vy *= 0.995;
+          p.life -= delta;
+          if (p.life <= 0) {
+            particles.splice(i, 1);
+          }
+        }
+      }
+
+      function drawParticles() {
+        ctx.globalCompositeOperation = 'lighter';
+        for (const p of particles) {
+          const alpha = p.life / p.maxLife;
+          if (alpha <= 0) continue;
+          const gradient = ctx.createRadialGradient(p.x * dpr, p.y * dpr, 0, p.x * dpr, p.y * dpr, p.size * 2 * dpr);
+          gradient.addColorStop(0, p.color);
+          gradient.addColorStop(1, 'transparent');
+          ctx.fillStyle = gradient;
+          ctx.globalAlpha = alpha * 0.9;
+          ctx.beginPath();
+          ctx.arc(p.x * dpr, p.y * dpr, p.size * 2 * (1 + (1 - alpha)) * dpr, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        ctx.globalAlpha = 1;
+        ctx.globalCompositeOperation = 'source-over';
+      }
+
+      function drawLogo() {
+        if (!logoLoaded) return;
+
+        const cx = canvas.width / 2 / dpr;
+        const cy = canvas.height / 2 / dpr;
+
+        ctx.save();
+        ctx.translate(cx, cy);
+
+        // Simulate 3D rotation with scale on X axis
+        const scaleX = Math.cos(rotationY);
+        const scaleY = Math.cos(rotationX);
+
+        ctx.scale(scaleX, 1);
+        ctx.rotate(rotationX * 0.3);
+        ctx.scale(1, scaleY);
+
+        const logoScale = getTokenFloat('--canvas-logo-scale', 0.8);
+        const drawW = logoWidth * logoScale;
+        const drawH = logoHeight * logoScale;
+        ctx.drawImage(logoImg, -drawW / 2, -drawH / 2, drawW, drawH);
+        ctx.restore();
+      }
+
+      function hexToRgba(hex, alpha) {
+        const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+        if (result) {
+          return `rgba(${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)}, ${alpha})`;
+        }
+        // Fallback: use brand primary light from CSS variable
+        const fallbackColor = getToken('--color-primary', '#D4B896');
+        return hexToRgba(fallbackColor, alpha);
+      }
+
+      function drawGlow() {
+        const cx = canvas.width / 2;
+        const cy = canvas.height / 2;
+        const pulseAmplitude = getTokenFloat('--canvas-glow-pulse-amplitude', 0.3);
+        const baseRadius = getTokenFloat('--canvas-glow-base-radius', 200);
+        const glowOpacity = getTokenFloat('--canvas-glow-opacity', 0.15);
+
+        const pulse = Math.sin(phase) * pulseAmplitude + (1 - pulseAmplitude);
+        const radius = baseRadius * pulse;
+
+        // Use brand primary light from CSS variables
+        const brandColor = getToken('--color-primary', '#D4B896');
+        const gradient = ctx.createRadialGradient(cx, cy, 0, cx, cy, radius);
+        gradient.addColorStop(0, hexToRgba(brandColor, glowOpacity));
+        gradient.addColorStop(1, 'transparent');
+
+        ctx.fillStyle = gradient;
+        ctx.beginPath();
+        ctx.arc(cx, cy, radius, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      let lastTime = performance.now();
+      function animate(time) {
+        const delta = (time - lastTime) / 1000;
+        lastTime = time;
+
+        // Clear
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Update rotation with lerp for smooth cinematic feel
+        const rotationLerp = getTokenFloat('--canvas-rotation-lerp', 0.02);
+        rotationX += (targetRotationX - rotationX) * rotationLerp;
+        rotationY += (targetRotationY - rotationY) * rotationLerp;
+
+        const phaseSpeed = getTokenFloat('--canvas-phase-speed', 0.3);
+        phase += delta * phaseSpeed;
+
+        // Draw layers: glow -> logo -> sparks
+        drawGlow();
+        drawLogo();
+        drawParticles();
+
+        requestAnimationFrame(animate);
+      }
+
+      // GSAP timeline for cinematic rotation sequence
+      const rotationTimeline = gsap.timeline({ repeat: -1, yoyo: true });
+      rotationTimeline
+        .to({ x: getTokenFloat('--rotation-phase-1-x', 0.15), y: getTokenFloat('--rotation-phase-1-y', -0.2) }, {
+          duration: getTokenFloat('--rotation-phase-1-duration', 4),
+          ease: 'cinematic',
+          onUpdate: function() {
+            targetRotationX = this.targets()[0].x;
+            targetRotationY = this.targets()[0].y;
+          }
+        })
+        .to({ x: getTokenFloat('--rotation-phase-2-x', -0.1), y: getTokenFloat('--rotation-phase-2-y', 0.15) }, {
+          duration: getTokenFloat('--rotation-phase-2-duration', 5),
+          ease: 'cinematic',
+          onUpdate: function() {
+            targetRotationX = this.targets()[0].x;
+            targetRotationY = this.targets()[0].y;
+          }
+        })
+        .to({ x: getTokenFloat('--rotation-phase-3-x', 0.08), y: getTokenFloat('--rotation-phase-3-y', -0.05) }, {
+          duration: getTokenFloat('--rotation-phase-3-duration', 3.5),
+          ease: 'cinematic',
+          onUpdate: function() {
+            targetRotationX = this.targets()[0].x;
+            targetRotationY = this.targets()[0].y;
+          }
+        })
+        .to({ x: getTokenFloat('--rotation-phase-4-x', 0), y: getTokenFloat('--rotation-phase-4-y', 0) }, {
+          duration: getTokenFloat('--rotation-phase-4-duration', 4),
+          ease: 'cinematic',
+          onUpdate: function() {
+            targetRotationX = this.targets()[0].x;
+            targetRotationY = this.targets()[0].y;
+          }
+        });
+
+      // Spark emission interval
+      const sparkIntervalMs = getTokenInt('--particle-spawn-interval', 800);
+      const burstChance = getTokenFloat('--particle-burst-chance', 0.15);
+
+      const sparkInterval = setInterval(() => {
+        const cx = canvas.width / 2 / dpr;
+        const cy = canvas.height / 2 / dpr;
+        spawnSpark(getTokenInt('--particle-normal-count', 3), cx, cy);
+        if (Math.random() < burstChance) {
+          spawnSpark(getTokenInt('--particle-burst-count', 12), cx, cy, true);
+        }
+      }, sparkIntervalMs);
+
+      // Handle logo load
+      logoImg.onload = function() {
+        logoLoaded = true;
+        logoWidth = logoImg.width;
+        logoHeight = logoImg.height;
+        resizeCanvas();
+        requestAnimationFrame(animate);
+      };
+
+      // Handle resize
+      window.addEventListener('resize', resizeCanvas);
+
+      // Pause animation when tab is hidden (performance + battery)
+      let isTabVisible = true;
+      document.addEventListener('visibilitychange', function() {
+        isTabVisible = !document.hidden;
+        if (!isTabVisible) {
+          // Pause GSAP timeline and clear spark interval
+          rotationTimeline.pause();
+          clearInterval(sparkInterval);
+        } else {
+          // Resume GSAP timeline and restart spark interval
+          rotationTimeline.resume();
+          sparkInterval = setInterval(() => {
+            const cx = canvas.width / 2 / dpr;
+            const cy = canvas.height / 2 / dpr;
+            spawnSpark(getTokenInt('--particle-normal-count', 3), cx, cy);
+            if (Math.random() < burstChance) {
+              spawnSpark(getTokenInt('--particle-burst-count', 12), cx, cy, true);
+            }
+          }, sparkIntervalMs);
+        }
+      });
+
+      // Cleanup on unload
+      window.addEventListener('beforeunload', () => {
+        clearInterval(sparkInterval);
+        rotationTimeline.kill();
+      });
+
+      // Expose for #8 cinematic burst (called from global loader)
+      window.__innovixCanvasBurst = function(count) {
+        const cx = canvas.width / 2 / dpr;
+        const cy = canvas.height / 2 / dpr;
+        if (typeof spawnSpark === 'function') {
+          spawnSpark(count || 40, cx, cy, true);
+        }
+      };
+    })();
+  </script>
+
+  <!-- Premium Preloader & Enhancements -->
+  <script>
+    // Check for reduced motion preference
+    var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Helper to read CSS custom properties
+    var getToken = function(name, fallback) {
+      return getComputedStyle(document.documentElement).getPropertyValue(name).trim() || fallback;
+    };
+    var getTokenFloat = function(name, fallback) {
+      return parseFloat(getToken(name, fallback));
+    };
+    var getTokenInt = function(name, fallback) {
+      return parseInt(getToken(name, fallback), 10);
+    };
+
+    // Hide preloader when page loads
+    window.addEventListener('load', function() {
+      var preloader = document.getElementById('preloader');
+      if (preloader) {
+        preloader.style.opacity = '0';
+        var hideDelay = getTokenInt('--preloader-hide-delay', 300);
+        setTimeout(function() { preloader.style.display = 'none'; }, hideDelay);
+      }
+
+      // ===========================================================
+      // CINEMATIC SLOW-MOTION EFFECTS #1, #2, #3 — HERO LOAD SEQUENCE
+      // ===========================================================
+
+      if (typeof gsap !== 'undefined') {
+
+        // #1 — Hero Brand Lockup: blur dissolve + scale, 1.6s, power3.out, stagger 0.12s
+        var brandLockup = document.querySelector('.hero-brand-lockup');
+        if (brandLockup) {
+          var brandSpans = brandLockup.querySelectorAll('span');
+          gsap.fromTo(brandSpans,
+            { opacity: 0, scale: 0.92, filter: 'blur(14px)' },
+            {
+              opacity: 1, scale: 1, filter: 'blur(0px)',
+              duration: 1.6, ease: 'power3.out',
+              stagger: 0.12, delay: 0.15
+            }
+          );
+        }
+
+        // #2 — Hero Headline: drift in, 1.2s, power3.out, "reality" lingers 200ms longer
+        var heroHeadline = document.querySelector('.hero-headline');
+        if (heroHeadline) {
+          var raw = heroHeadline.innerHTML;
+          // Strip the inner <span class="...">reality</span> to plain text "reality"
+          var plain = raw.replace(/<span[^>]*>(.*?)<\/span>/g, '$1');
+          var words = plain.split(/(\s+)/);
+          var wordNodes = [];
+          heroHeadline.innerHTML = '';
+          words.forEach(function(tok) {
+            if (/\S/.test(tok)) {
+              var span = document.createElement('span');
+              span.textContent = tok;
+              span.style.display = 'inline-block';
+              span.style.willChange = 'transform, opacity, filter';
+              heroHeadline.appendChild(span);
+              wordNodes.push(span);
+            } else {
+              heroHeadline.appendChild(document.createTextNode(tok));
+            }
+          });
+
+          gsap.set(wordNodes, { opacity: 0, y: 32, filter: 'blur(10px)' });
+          var totalWords = wordNodes.length;
+          var baseStagger = 0.06;
+          var baseDelay = 0.5;
+          var realityExtra = 0.2; // "reality" lingers — applied to last 4 words if available
+
+          wordNodes.forEach(function(node, i) {
+            var lingering = (i >= totalWords - 4) ? realityExtra : 0;
+            gsap.to(node, {
+              opacity: 1, y: 0, filter: 'blur(0px)',
+              duration: 1.2, ease: 'power3.out',
+              delay: baseDelay + i * baseStagger + lingering
+            });
+          });
+        }
+
+        // Hero tagline (subtle drift-in)
+        var heroTagline = document.querySelector('.hero-tagline');
+        if (heroTagline) {
+          gsap.fromTo(heroTagline,
+            { opacity: 0, y: 8, filter: 'blur(6px)' },
+            { opacity: 1, y: 0, filter: 'blur(0px)', duration: 1.0, ease: 'power3.out', delay: 0.35 }
+          );
+        }
+
+        // Hero subhead (drift-in with subtle blur)
+        var heroSubhead = document.querySelector('.hero-subhead');
+        if (heroSubhead) {
+          gsap.fromTo(heroSubhead,
+            { opacity: 0, y: 14, filter: 'blur(8px)' },
+            { opacity: 1, y: 0, filter: 'blur(0px)', duration: 1.1, ease: 'power3.out', delay: 0.55 }
+          );
+        }
+
+        // #3 — Hero CTA Buttons: suspended landing, 1.0s, expo.out, y: 30 → 0
+        var heroCtaEls = document.querySelectorAll('.hero-cta');
+        if (heroCtaEls.length) {
+          gsap.fromTo(heroCtaEls,
+            { opacity: 0, y: 30 },
+            { opacity: 1, y: 0, duration: 1.0, ease: 'expo.out', stagger: 0.18, delay: 1.1 }
+          );
+        }
+
+        // Scroll cue lingers until 2.4s — fade in only
+        var scrollCueEl = document.querySelector('.scroll-cue');
+        if (scrollCueEl) {
+          gsap.set(scrollCueEl, { opacity: 0 });
+          gsap.to(scrollCueEl, { opacity: 1, duration: 0.8, ease: 'power2.out', delay: 1.6 });
+        }
+
+        // #8 — CANVAS LOGO CINEMATIC BURST (40 particles, 2.0s lifetime)
+        if (typeof window.__innovixCanvasBurst === 'function' && !prefersReducedMotion) {
+          setTimeout(function() { window.__innovixCanvasBurst(40); }, 1100);
+          setTimeout(function() { window.__innovixCanvasBurst(28); }, 1900);
+        }
+
+      } // end hero block
+    });
+
+    // FAQ Accordion - event delegation
+    document.addEventListener('click', function(e) {
+      var btn = e.target.closest('[data-faq-toggle]');
+      if (!btn) return;
+      var content = btn.nextElementSibling;
+      var icon = btn.querySelector('.faq-icon');
+      var isOpen = !content.classList.contains('hidden');
+
+      // Close all
+      document.querySelectorAll('.faq-content').forEach(function(el) { el.classList.add('hidden'); });
+      document.querySelectorAll('.faq-icon').forEach(function(el) { el.style.transform = 'rotate(0deg)'; });
+
+      if (!isOpen) {
+        content.classList.remove('hidden');
+        icon.style.transform = 'rotate(180deg)';
+      }
+    });
+
+    // GSAP ScrollTrigger animations (replaces IntersectionObserver for better performance)
+    if (!prefersReducedMotion && typeof gsap !== 'undefined' && gsap.ScrollTrigger) {
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Section entrance animations - cinematic per-section choreography
+      var sections = document.querySelectorAll('section:not(#stats)');
+      var sectionDuration = getTokenFloat('--duration-cinematic', 0.8);
+      var sectionTriggerStart = getToken('--section-trigger-start', 'top 85%');
+      sections.forEach(function(section, index) {
+        gsap.set(section, { opacity: 0, y: 30 });
+        gsap.to(section, {
+          opacity: 1, y: 0,
+          duration: sectionDuration, ease: 'power3.out',
+          scrollTrigger: {
+            trigger: section,
+            start: sectionTriggerStart,
+            toggleActions: 'play none none reverse',
+          }
+        });
+      });
+
+      // ===========================================================
+      // #4 — WORK CARDS: Parallax unfold, 0.12s stagger, blurred rise
+      // ===========================================================
+      var workCards = document.querySelectorAll('.work-card, .project-card, [data-work-card]');
+      workCards.forEach(function(card, i) {
+        var img = card.querySelector('img, .work-card-img, picture');
+        if (img) gsap.set(img, { scale: 1.06, filter: 'blur(8px)' });
+        gsap.set(card, { opacity: 0, y: 60, filter: 'blur(6px)' });
+        gsap.to(card, {
+          opacity: 1, y: 0, filter: 'blur(0px)',
+          duration: 1.0, ease: 'power3.out',
+          delay: i * 0.12,
+          scrollTrigger: { trigger: card, start: 'top 88%', toggleActions: 'play none none reverse' }
+        });
+        if (img) {
+          gsap.to(img, {
+            scale: 1.0, filter: 'blur(0px)',
+            duration: 1.2, ease: 'power3.out',
+            delay: i * 0.12 + 0.1,
+            scrollTrigger: { trigger: card, start: 'top 88%', toggleActions: 'play none none reverse' }
+          });
+          // Subtle parallax within the card while card is in view
+          gsap.to(img, {
+            yPercent: -8,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: card, start: 'top bottom', end: 'bottom top',
+              scrub: 1.2
+            }
+          });
+        }
+      });
+
+      // ===========================================================
+      // #5 — BENTO GRID: Weighted cascade with rotation micro-entrance
+      // ===========================================================
+      var bentoCards = document.querySelectorAll('.bento-card');
+      var bentoOrder = [0.0, 0.08, 0.20, 0.32, 0.42, 0.50];
+      bentoCards.forEach(function(card, i) {
+        var delay = bentoOrder[i] !== undefined ? bentoOrder[i] : i * 0.08;
+        gsap.set(card, { opacity: 0, y: 50, rotation: i % 2 === 0 ? -1.2 : 1.2, scale: 0.985, filter: 'blur(6px)' });
+        gsap.to(card, {
+          opacity: 1, y: 0, rotation: 0, scale: 1, filter: 'blur(0px)',
+          duration: 1.1, ease: 'power3.out',
+          delay: delay,
+          scrollTrigger: { trigger: card, start: 'top 92%', toggleActions: 'play none none reverse' }
+        });
+      });
+
+      // ===========================================================
+      // #6 — PROCESS STEPS: Stamp-in rotation, 0.8s, power3.out
+      // ===========================================================
+      var processNums = document.querySelectorAll('.process-number');
+      var processSteps = document.querySelectorAll('.process-step');
+      processNums.forEach(function(num, i) {
+        gsap.set(num, { opacity: 0, scale: 0.4, rotation: -180 });
+        gsap.to(num, {
+          opacity: 1, scale: 1, rotation: 0,
+          duration: 0.8, ease: 'power3.out',
+          delay: i * 0.18,
+          scrollTrigger: { trigger: num, start: 'top 85%', toggleActions: 'play none none reverse' }
+        });
+      });
+      processSteps.forEach(function(step, i) {
+        gsap.set(step, { opacity: 0, y: 24 });
+        gsap.to(step, {
+          opacity: 1, y: 0,
+          duration: 0.8, ease: 'power3.out',
+          delay: i * 0.18 + 0.1,
+          scrollTrigger: { trigger: step, start: 'top 88%', toggleActions: 'play none none reverse' }
+        });
+      });
+
+      // ===========================================================
+      // #7 — TESTIMONIAL CARDS: floating glass with 0.3x scroll parallax
+      // ===========================================================
+      var testimonialCards = document.querySelectorAll('.testimonial-card');
+      testimonialCards.forEach(function(card, i) {
+        gsap.set(card, { opacity: 0, y: 40, filter: 'blur(8px)' });
+        gsap.to(card, {
+          opacity: 1, y: 0, filter: 'blur(0px)',
+          duration: 1.0, ease: 'power3.out',
+          delay: i * 0.12,
+          scrollTrigger: { trigger: card, start: 'top 90%', toggleActions: 'play none none reverse' }
+        });
+        // 0.3x scroll parallax (cards move at 30% of scroll speed — subtle drift)
+        gsap.to(card, {
+          yPercent: -8,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: card, start: 'top bottom', end: 'bottom top',
+            scrub: 3.0
+          }
+        });
+      });
+
+      // ===========================================================
+      // #11 — CONTACT SECTION: opposite sides convergence, 1.0s, power2.out
+      // ===========================================================
+      var contactSection = document.getElementById('contact');
+      if (contactSection) {
+        var contactLeft = contactSection.querySelector('.contact-info, .contact-left, [data-contact-info]');
+        var contactRight = contactSection.querySelector('.contact-form, .contact-right, form');
+        if (contactLeft) {
+          gsap.set(contactLeft, { opacity: 0, x: -60 });
+          gsap.to(contactLeft, {
+            opacity: 1, x: 0,
+            duration: 1.0, ease: 'power2.out',
+            scrollTrigger: { trigger: contactSection, start: 'top 78%', toggleActions: 'play none none reverse' }
+          });
+        }
+        if (contactRight) {
+          gsap.set(contactRight, { opacity: 0, x: 60 });
+          gsap.to(contactRight, {
+            opacity: 1, x: 0,
+            duration: 1.0, ease: 'power2.out',
+            delay: 0.2,
+            scrollTrigger: { trigger: contactSection, start: 'top 78%', toggleActions: 'play none none reverse' }
+          });
+        }
+      }
+
+      // ===========================================================
+      // #12 — SECTION DIVIDERS: drawing in, 0.8s, power2.inOut
+      // ===========================================================
+      var sectionDividers = document.querySelectorAll('.cinematic-divider, .section-divider, hr');
+      sectionDividers.forEach(function(div, i) {
+        // Only animate full-width thin lines (skip <br> and other tags)
+        if (div.tagName !== 'HR' && !div.classList.contains('cinematic-divider') && !div.classList.contains('section-divider')) return;
+        if (div.tagName === 'HR') div.classList.add('cinematic-divider');
+        gsap.set(div, { scaleX: 0, transformOrigin: 'left center' });
+        gsap.to(div, {
+          scaleX: 1,
+          duration: 0.8, ease: 'power2.inOut',
+          delay: i * 0.05,
+          scrollTrigger: { trigger: div, start: 'top 92%', toggleActions: 'play none none reverse' }
+        });
+      });
+
+      // Stats counter animation
+      var statsSection = document.getElementById('stats');
+      var statsDuration = getTokenFloat('--duration-slowest', 2);
+      var statsTriggerStart = getToken('--stats-trigger-start', 'top 70%');
+      if (statsSection) {
+        var counters = statsSection.querySelectorAll('.stats-count');
+        counters.forEach(function(counter) {
+          var targetText = counter.getAttribute('data-count');
+          var isPercent = targetText.includes('%');
+          var isPlus = targetText.includes('+');
+          var target = parseInt(targetText.replace(/[^0-9]/g, ''), 10);
+
+          var obj = { value: 0 };
+          gsap.to(obj, {
+            value: target,
+            duration: statsDuration,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: statsSection,
+              start: statsTriggerStart,
+              toggleActions: 'play none none reverse',
+              onEnter: function() {
+                gsap.to(obj, {
+                  value: target,
+                  duration: statsDuration,
+                  ease: 'power2.out',
+                  onUpdate: function() {
+                    counter.textContent = Math.floor(obj.value) + (isPlus ? '+' : '') + (isPercent ? '%' : '');
+                  }
+                });
+              }
+            }
+          });
+        });
+      }
+
+      // Hero video parallax
+      var heroVideo = document.querySelector('.hero-video');
+      var parallaxYPercent = getTokenFloat('--parallax-y-percent', 30);
+      var parallaxScrub = getTokenFloat('--parallax-scrub', 1);
+      if (heroVideo) {
+        // Slow playback to match cinematic text motion (text reveals are 0.8s–1.6s)
+        heroVideo.playbackRate = 0.5;
+
+        gsap.to(heroVideo, {
+          yPercent: parallaxYPercent,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: heroVideo,
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: parallaxScrub,
+          }
+        });
+      }
+
+      // Unmute on first user interaction (autoplay policy workaround)
+      function enableAudio() {
+        if (heroVideo) heroVideo.muted = false;
+        document.removeEventListener('click', enableAudio);
+        document.removeEventListener('keydown', enableAudio);
+        document.removeEventListener('touchstart', enableAudio);
+      }
+      document.addEventListener('click', enableAudio);
+      document.addEventListener('keydown', enableAudio);
+      document.addEventListener('touchstart', enableAudio);
+    } else {
+      // Reduced motion or GSAP not available: show all immediately
+      document.querySelectorAll('section').forEach(function(section) {
+        section.style.opacity = '1';
+        section.style.transform = 'none';
+      });
+
+      // Stats counter - show final values immediately
+      document.querySelectorAll('.stats-count').forEach(function(counter) {
+        var target = counter.getAttribute('data-count');
+        counter.textContent = target;
+      });
+
+      // Hero video: just enable audio on interaction, no parallax
+      var heroVideo = document.querySelector('.hero-video');
+      if (heroVideo) {
+        function enableAudio() {
+          heroVideo.muted = false;
+          document.removeEventListener('click', enableAudio);
+          document.removeEventListener('keydown', enableAudio);
+          document.removeEventListener('touchstart', enableAudio);
+        }
+        document.addEventListener('click', enableAudio);
+        document.addEventListener('keydown', enableAudio);
+        document.addEventListener('touchstart', enableAudio);
+
+        // Fallback parallax if GSAP not available but motion is OK
+        if (!prefersReducedMotion && typeof gsap === 'undefined') {
+          window.addEventListener('scroll', function() {
+            var scrolled = window.pageYOffset;
+            heroVideo.style.transform = 'translateZ(0) translateY(' + (scrolled * 0.5) + 'px)';
+          });
+        }
+      }
+    }
+
+    // Smooth scroll for anchor links (only same-page anchors with valid targets)
+    document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+      anchor.addEventListener('click', function(e) {
+        var href = this.getAttribute('href');
+        // Only prevent default for same-page anchors (not just "#")
+        if (href === '#') return;
+        var target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        // If target doesn't exist, let browser handle it (external links, etc.)
+      });
+    });
+
+    // Add loading state to images for smooth fade-in (skip team portraits so they never start invisible)
+    var imageFadeDuration = getToken('--image-fade-duration', '500ms');
+    document.querySelectorAll('img').forEach(function(img) {
+      if (img.closest('#team')) return; // team photos must always be visible
+      img.style.opacity = '0';
+      img.style.transition = 'opacity ' + imageFadeDuration + ' ease';
+      img.addEventListener('load', function() { this.style.opacity = '1'; });
+      if (img.complete) img.style.opacity = '1';
+    });
+
+    // Contact form submission - Formspree handles the POST
+    var contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+      contactForm.addEventListener('submit', function(e) {
+        var btn = this.querySelector('button[type="submit"]');
+        var originalText = btn.innerHTML;
+
+        // Show loading state
+        btn.disabled = true;
+        btn.innerHTML = '<span class="relative z-10">Sending...</span>';
+        btn.style.opacity = '0.7';
+
+        // Form will POST to Formspree endpoint
+        // On success, Formspree redirects to /?form=success
+        // We'll show confetti and success state based on URL
+        setTimeout(function() {
+          // Success - trigger confetti
+          if (typeof confetti !== 'undefined') {
+            confetti({
+              particleCount: 100,
+              spread: 70,
+              origin: { y: 0.6 },
+              colors: ['#3B82F6', '#60A5FA', '#93C5FD', '#FFFFFF']
+            });
+          }
+
+          // Show success message
+          btn.innerHTML = '<span class="relative z-10">Sent!</span>';
+          btn.style.background = 'linear-gradient(90deg, var(--color-primary), var(--color-primary-hover))';
+
+          // Reset button after delay
+          setTimeout(function() {
+            btn.disabled = false;
+            btn.innerHTML = originalText;
+            btn.style.opacity = '1';
+            btn.style.background = 'var(--glass-btn-bg)';
+          }, 3000);
+        }, 1500);
+      });
+    }
+
+    // Handle Formspree success redirect
+    if (window.location.search.includes('form=success')) {
+      var btn = document.querySelector('#contact-form button[type="submit"]');
+      if (btn) {
+        btn.innerHTML = '<span class="relative z-10">Sent!</span>';
+        btn.style.background = 'linear-gradient(90deg, #10b981, #34d399)';
+        setTimeout(function() {
+          btn.disabled = false;
+          btn.innerHTML = '<span class="relative z-10">Start a project</span>';
+          btn.style.opacity = '1';
+          btn.style.background = 'linear-gradient(90deg, var(--color-primary), var(--color-primary))';
+        }, 3000);
+      }
+    }
+  </script>
+</body>
+</html>

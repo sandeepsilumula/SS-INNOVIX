@@ -1,0 +1,4 @@
+import { createRoot } from 'react-dom/client'
+import TestSimple from './test-simple'
+
+createRoot(document.getElementById('root')!).render(<TestSimple />)

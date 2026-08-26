@@ -1,0 +1,388 @@
+/* ════════════════════════════════════════════════════════════════════════
+   S&S INNOVIX — Global Styles Entry Point
+   ════════════════════════════════════════════════════════════════════════ */
+
+@import './premium/tokens.css';
+
+/* ════════════════════════════════════════════════════════════════════════
+   Variable Web Fonts — Google Fonts (Inter, Space Grotesk, JetBrains Mono)
+   Self-hosted woff2-variations for performance and privacy
+   ════════════════════════════════════════════════════════════════════════ */
+
+/* ─── Space Grotesk — Variable Display Font ─── */
+@font-face {
+  font-family: 'Space Grotesk Variable';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url('https://fonts.gstatic.com/s/spacegrotesk/v16/V8mQoQDjQSkFtoMM3T6r8E7mF71Q-gOoraIAEj7aUXskPMBBSSJLm2E.woff2') format('woff2-variations');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* ─── Inter — Variable Body Font ─── */
+@font-face {
+  font-family: 'Inter Variable';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url('https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfAZ9hjp-Ek-_EeA.woff2') format('woff2-variations');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* ─── JetBrains Mono — Variable Mono Font ─── */
+@font-face {
+  font-family: 'JetBrains Mono Variable';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url('https://fonts.gstatic.com/s/jetbrainsmono/v18/tDbY2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKxjOVGH.woff2') format('woff2-variations');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* ─── Original local font faces (preserved) ─── */
+@font-face {
+  font-family: 'Plexifont';
+  src: url('/src/assets/fonts/plexifont.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Radicalis';
+  src: url('/src/assets/fonts/Radicalis.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Shrofa';
+  src: url('/src/assets/fonts/Shrofa.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Flexing Demo';
+  src: url('/assets/fonts/Flexing Demo.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ─── Base Reset ─── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* ─── Typography tokens for variable fonts ─── */
+:root {
+  /* Variable font family tokens — Google Fonts as primary, local as fallback */
+  --font-sans: 'Inter Variable', 'Inter', system-ui, sans-serif;
+  --font-body: 'Inter Variable', 'Inter', system-ui, sans-serif;
+  --font-display: 'Space Grotesk Variable', 'Space Grotesk', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono Variable', 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* Original local font references — preserved */
+  --font-plexi: 'Plexifont', system-ui, sans-serif;
+  --font-radicalis: 'Radicalis', system-ui, sans-serif;
+  --font-shrofa: 'Shrofa', system-ui, sans-serif;
+  --font-flexing: 'Flexing Demo', system-ui, sans-serif;
+
+  /* ── Fluid Typography Scale ── */
+  --text-xs: clamp(0.625rem, 0.57rem + 0.31vw, 0.875rem);
+  --text-sm: clamp(0.75rem, 0.68rem + 0.36vw, 1rem);
+  --text-md: clamp(0.875rem, 0.78rem + 0.45vw, 1.125rem);
+  --text-lg: clamp(1rem, 0.88rem + 0.56vw, 1.25rem);
+  --text-xl: clamp(1.125rem, 0.98rem + 0.67vw, 1.375rem);
+  --text-2xl: clamp(1.25rem, 1.08rem + 0.83vw, 1.625rem);
+  --text-3xl: clamp(1.5rem, 1.28rem + 1.09vw, 2rem);
+  --text-4xl: clamp(1.75rem, 1.48rem + 1.35vw, 2.375rem);
+  --text-5xl: clamp(2rem, 1.69rem + 1.56vw, 2.75rem);
+  --text-6xl: clamp(2.375rem, 1.96rem + 2.08vw, 3.375rem);
+  --text-7xl: clamp(2.75rem, 2.23rem + 2.6vw, 4rem);
+  --text-8xl: clamp(3rem, 2.4rem + 3vw, 4.5rem);
+
+  /* ── Fluid Line-Height Tokens ── */
+  --lh-tight: 1.05;
+  --lh-snug: 1.15;
+  --lh-normal: 1.45;
+  --lh-relaxed: 1.6;
+  --lh-loose: 1.75;
+
+  /* ── Dynamic line-height — adjusts with viewport width ── */
+  /* On larger screens, reduce leading slightly for tighter blocks */
+  --lh-dynamic: clamp(1.45, 1.5 - 0.1 * (100vw - 320px) / (1920 - 320), 1.65);
+}
+
+/* ─── Viewport width variable for JS-driven adjustments ─── */
+@media (min-width: 640px) {
+  :root { --viewport-width: 640px; }
+}
+@media (min-width: 768px) {
+  :root { --viewport-width: 768px; }
+}
+@media (min-width: 1024px) {
+  :root { --viewport-width: 1024px; }
+}
+@media (min-width: 1280px) {
+  :root { --viewport-width: 1280px; }
+}
+@media (min-width: 1536px) {
+  :root { --viewport-width: 1536px; }
+}
+@media (min-width: 1920px) {
+  :root { --viewport-width: 1920px; }
+}
+
+/* ─── Body base with variable font ─── */
+body {
+  margin: 0;
+  background: var(--color-bg-primary);
+  color: var(--color-fg-primary);
+  font-family: var(--font-body);
+  font-optical-sizing: auto;
+  font-feature-settings: 'ss01', 'ss02', 'cv01';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  cursor: default;
+  line-height: var(--lh-dynamic);
+}
+
+/* Custom cursor override - applied when CustomCursor mounts on desktop */
+body.cursor-none {
+  cursor: none !important;
+}
+
+/* Restore system cursor on touch-primary devices and form elements */
+@media (pointer: coarse) {
+  body:not(.cursor-none), *, *::before, *::after {
+    cursor: auto !important;
+  }
+}
+
+/* Keep text cursor for text inputs */
+input[type="text"],
+input[type="email"],
+textarea,
+select {
+  cursor: text;
+}
+
+/* ── Focus Visible ─── */
+:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ─── Font Utility Classes ─── */
+.font-display {
+  font-family: var(--font-display);
+}
+.font-body {
+  font-family: var(--font-body);
+}
+.font-mono {
+  font-family: var(--font-mono);
+}
+.font-plexi {
+  font-family: var(--font-plexi);
+}
+.font-radicalis {
+  font-family: var(--font-radicalis);
+}
+.font-shrofa {
+  font-family: var(--font-shrofa);
+}
+.font-flexing {
+  font-family: var(--font-flexing);
+}
+
+/* ─── Fluid Text Size Classes ─── */
+.text-fluid-xs { font-size: var(--text-xs); }
+.text-fluid-sm { font-size: var(--text-sm); }
+.text-fluid-md { font-size: var(--text-md); }
+.text-fluid-lg { font-size: var(--text-lg); }
+.text-fluid-xl { font-size: var(--text-xl); }
+.text-fluid-2xl { font-size: var(--text-2xl); }
+.text-fluid-3xl { font-size: var(--text-3xl); }
+.text-fluid-4xl { font-size: var(--text-4xl); }
+.text-fluid-5xl { font-size: var(--text-5xl); }
+.text-fluid-6xl { font-size: var(--text-6xl); }
+.text-fluid-7xl { font-size: var(--text-7xl); }
+.text-fluid-8xl { font-size: var(--text-8xl); }
+
+/* ─── Font Weight Classes ─── */
+.font-light { font-weight: 300; }
+.font-normal { font-weight: 400; }
+.font-medium { font-weight: 500; }
+.font-semibold { font-weight: 600; }
+.font-bold { font-weight: 700; }
+
+/* ─── Line Height Utility Classes ─── */
+.lh-tight { line-height: var(--lh-tight); }
+.lh-snug { line-height: var(--lh-snug); }
+.lh-normal { line-height: var(--lh-normal); }
+.lh-relaxed { line-height: var(--lh-relaxed); }
+.lh-loose { line-height: var(--lh-loose); }
+.lh-dynamic { line-height: var(--lh-dynamic); }
+
+/* ─── Section-specific typography ─── */
+
+/* Hero headlines — display font with tight leading */
+.hero-headline {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  line-height: var(--lh-tight);
+  letter-spacing: -0.03em;
+  font-weight: 500;
+  color: var(--color-accent-primary);
+}
+
+.hero-subhead {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 4vw, 3rem);
+  line-height: var(--lh-snug);
+  letter-spacing: -0.02em;
+  font-weight: 500;
+  color: var(--color-fg-primary);
+}
+
+/* Body copy in sections — readable with relaxed leading */
+.section-body {
+  font-family: var(--font-body);
+  font-size: var(--text-lg);
+  line-height: var(--lh-dynamic);
+  color: var(--color-fg-secondary);
+}
+
+/* Caption text — slightly tighter */
+.section-caption {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  line-height: var(--lh-normal);
+  color: var(--color-fg-muted);
+}
+
+/* UI labels and buttons */
+.ui-label {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  letter-spacing: 0.03em;
+  font-weight: 500;
+  color: var(--color-fg-primary);
+  text-transform: uppercase;
+}
+
+/* Code/mono text */
+.code-inline {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--color-lamp-cream);
+}
+
+/* ─── Responsive heading adjustments ─── */
+h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 4rem);
+  line-height: var(--lh-tight);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+  line-height: var(--lh-snug);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+}
+
+h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2.5vw, 2rem);
+  line-height: var(--lh-snug);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+h4 {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  line-height: var(--lh-normal);
+  font-weight: 600;
+}
+
+h5 {
+  font-family: var(--font-body);
+  font-size: clamp(0.875rem, 1.5vw, 1rem);
+  line-height: var(--lh-normal);
+  font-weight: 600;
+}
+
+h6 {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  line-height: var(--lh-normal);
+  font-weight: 600;
+}
+
+/* ─── Variable font variation settings ─── */
+
+/* Enable variable font features on modern browsers */
+@supports (font-variation-settings: normal) {
+  .font-display {
+    font-variation-settings: 'wght' 500, 'ital' 0;
+  }
+
+  .font-bold-display {
+    font-variation-settings: 'wght' 700, 'ital' 0;
+  }
+
+  .font-body {
+    font-variation-settings: 'wght' 400, 'ital' 0;
+  }
+
+  .font-medium-body {
+    font-variation-settings: 'wght' 500, 'ital' 0;
+  }
+
+  .font-mono {
+    font-variation-settings: 'wght' 400, 'ital' 0;
+  }
+
+  .font-medium-mono {
+    font-variation-settings: 'wght' 500, 'ital' 0;
+  }
+}
+
+/* ─── Reduced motion guard for font transitions ── */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+/* ─── Tailwind Directives ─── */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

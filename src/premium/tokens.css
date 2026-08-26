@@ -1,0 +1,307 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   S&S INNOVIX — Design Token Registry (tokens.css)
+   Single source of truth for all design primitives.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ─── @property Registration for Animated / CSS-Var Values ─── */
+@property --color-void-black  { syntax: "<color>"; inherits: false; initial-value: #000000; }
+@property --color-pure-white  { syntax: "<color>"; inherits: false; initial-value: #ffffff; }
+@property --color-charcoal    { syntax: "<color>"; inherits: false; initial-value: #202020; }
+@property --color-graphite    { syntax: "<color>"; inherits: false; initial-value: #333333; }
+@property --color-lamp-cream   { syntax: "<color>"; inherits: false; initial-value: #f5f5f0; }
+@property --color-lamp-cream-dim { syntax: "<color>"; inherits: false; initial-value: #e8e8e0; }
+@property --color-smoke       { syntax: "<color>"; inherits: false; initial-value: #999999; }
+
+@property --color-accent-primary  { syntax: "<color>"; inherits: false; initial-value: #54b3c2; }
+@property --color-teal-cyan       { syntax: "<color>"; inherits: false; initial-value: #54b3c2; }
+@property --color-teal-cyan-dark  { syntax: "<color>"; inherits: false; initial-value: #2c5f7a; }
+@property --color-fg-primary      { syntax: "<color>"; inherits: false; initial-value: #ffffff; }
+
+@property --ease-out-expo  { syntax: "<number>"; inherits: false; initial-value: 0.16, 1, 0.3, 1; }
+@property --ease-out-quint { syntax: "<number>"; inherits: false; initial-value: 0.23, 1, 0.32, 1; }
+@property --ease-out-circ  { syntax: "<number>"; inherits: false; initial-value: 0.075, 0.82, 0.165, 1; }
+@property --ease-spring    { syntax: "<number>"; inherits: false; initial-value: 0.34, 1.56, 0.64, 1; }
+
+@property --gradient-pos       { syntax: '<percentage>'; inherits: true; initial-value: 0%; }
+@property --border-angle       { syntax: '<angle>';     inherits: true; initial-value: 0deg; }
+@property --noise-opacity      { syntax: '<number>';    inherits: false; initial-value: 0.015; }
+@property --glow-intensity     { syntax: '<number>';    inherits: false; initial-value: 0; }
+@property --reveal-progress    { syntax: '<percentage>';inherits: false; initial-value: 0%; }
+
+/* ─── Font Face Declarations ─── */
+@font-face {
+  font-family: "Flexing Demo";
+  src: url("/assets/fonts/Flexing Demo.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "VisueltPro";
+  src: url("/assets/VisueltPro.woff2") format("woff2");
+  font-weight: 300;
+  font-display: swap;
+}
+@font-face {
+  font-family: "VisueltPro";
+  src: url("/assets/VisueltPro.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "VisueltPro";
+  src: url("/assets/VisueltPro.woff2") format("woff2");
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Canela";
+  src: url("/assets/Canela.woff2") format("woff2");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* ─── Font Utility Classes ─── */
+.font-visuelt {
+  font-family: "VisueltPro", system-ui, sans-serif;
+}
+.font-canela {
+  font-family: "Canela", Georgia, serif;
+  font-style: italic;
+}
+.font-emotion {
+  font-family: "Canela", Georgia, serif;
+  font-style: italic;
+}
+
+/* ─── Complete Design Token System ─── */
+:root {
+  /* ─── Core Palette (Primitive Colors) ─── */
+  --color-void-black: #000000;
+  --color-pure-white: #ffffff;
+  --color-charcoal: #202020;
+  --color-graphite: #333333;
+  --color-lamp-cream: #f5f5f0;
+  --color-lamp-cream-dim: #e8e8e0;
+  --color-smoke: #999999;
+  --color-teal-cyan: #54b3c2;
+  --color-teal-cyan-dark: #2c5f7a;
+
+  /* ─── Semantic Color Aliases ─── */
+  /* Backgrounds */
+  --color-bg-primary: var(--color-void-black);
+  --color-bg-secondary: var(--color-charcoal);
+  --color-bg-tertiary: var(--color-graphite);
+
+  /* Foregrounds / Text */
+  --color-fg-primary: var(--color-pure-white);
+  --color-fg-secondary: var(--color-lamp-cream);
+  --color-fg-tertiary: var(--color-lamp-cream-dim);
+  --color-fg-muted: var(--color-smoke);
+
+  /* Accents */
+  --color-accent-primary: var(--color-teal-cyan);
+  --color-accent-dark: var(--color-teal-cyan-dark);
+
+  /* Borders */
+  --color-border-subtle: rgba(245, 245, 240, 0.08);
+  --color-border-muted: rgba(245, 245, 240, 0.15);
+  --color-border-strong: rgba(245, 245, 240, 0.3);
+  --color-focus-ring: var(--color-lamp-cream);
+
+  /* ─── Glassmorphism Tokens ─── */
+  --glass-blur-sm: 8px;
+  --glass-blur-md: 12px;
+  --glass-blur-lg: 20px;
+  --glass-blur-xl: 24px;
+  --glass-saturate: 140%;
+  --glass-opacity-bg: 0.02;
+  --glass-opacity-border: 0.08;
+  --glass-opacity-border-strong: 0.15;
+  --glass-opacity-nav: 0.03;
+  --glass-opacity-nav-scrolled: 0.05;
+  --glass-opacity-inner-bg: 0.6;
+  --glass-opacity-inner-ring: 0.05;
+  --glass-opacity-overlay: 0.95;
+
+  /* ─── Animation / Easing Tokens ─── */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quint: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-out-circ: cubic-bezier(0.075, 0.82, 0.165, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --duration-fast: 150ms;
+  --duration-base: 300ms;
+  --duration-slow: 500ms;
+  --duration-slower: 800ms;
+  --duration-slowest: 1200ms;
+
+  /* ─── Spacing Scale ─── */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+
+  /* ─── Border Radius Scale ─── */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 24px;
+  --radius-full: 9999px;
+
+  /* ─── Shadow Tokens ─── */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+  --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.6);
+  --shadow-glow-lamp: 0 0 20px rgba(245, 245, 240, 0.15), 0 0 60px rgba(245, 245, 240, 0.05);
+  --shadow-glow-teal: 0 0 20px rgba(84, 179, 194, 0.2), 0 0 60px rgba(84, 179, 194, 0.08);
+  --shadow-glow-teal-lg: 0 0 30px rgba(84, 179, 194, 0.25), 0 0 80px rgba(84, 179, 194, 0.1);
+  --shadow-inner-top: inset 0 1px 0 rgba(245, 245, 240, 0.15);
+  --shadow-inner-bottom: inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+
+  /* ─── Typography Tokens ─── */
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --font-display: 'Inter', system-ui, sans-serif;
+  --font-plexi: 'Plexifont', system-ui, sans-serif;
+  --font-radicalis: 'Radicalis', system-ui, sans-serif;
+  --font-shrofa: 'Shrofa', system-ui, sans-serif;
+  --font-flexing: 'Flexing Demo', system-ui, sans-serif;
+
+  /* ─── Typography Scale ─── */
+  --type-display-xl: clamp(3rem, 8vw, 7rem);
+  --type-display-lg: clamp(2.5rem, 6vw, 5rem);
+  --type-display-md: clamp(2rem, 4vw, 3.5rem);
+  --type-display-sm: clamp(1.5rem, 3vw, 2.25rem);
+
+  --type-headline-xl: clamp(2rem, 4vw, 3rem);
+  --type-headline-lg: clamp(1.75rem, 3vw, 2.5rem);
+  --type-headline-md: clamp(1.5rem, 2.5vw, 2rem);
+  --type-headline-sm: clamp(1.25rem, 2vw, 1.5rem);
+
+  --type-body-xl: clamp(1.125rem, 1.5vw, 1.375rem);
+  --type-body-lg: clamp(1rem, 1.25vw, 1.125rem);
+  --type-body-md: 1rem;
+  --type-body-sm: 0.875rem;
+
+  --type-ui-xl: 1.125rem;
+  --type-ui-lg: 1rem;
+  --type-ui-md: 0.875rem;
+  --type-ui-sm: 0.75rem;
+
+  --type-mono-lg: 1rem;
+  --type-mono-md: 0.875rem;
+  --type-mono-sm: 0.75rem;
+
+  /* Dynamic line-height tokens based on viewport width */
+  --lh-tight: clamp(1.0, 1.05 - 0.05 * (100vw - 320px) / (1920 - 320), 1.1);
+  --lh-snug: clamp(1.1, 1.15 - 0.05 * (100vw - 320px) / (1920 - 320), 1.2);
+  --lh-normal: clamp(1.4, 1.45 - 0.05 * (100vw - 320px) / (1920 - 320), 1.6);
+  --lh-relaxed: clamp(1.6, 1.65 - 0.1 * (100vw - 320px) / (1920 - 320), 1.8);
+  --lh-loose: clamp(1.75, 1.7 - 0.1 * (100vw - 320px) / (1920 - 320), 2.0);
+
+  /* ─── Z-Index Scale ─── */
+  --z-bg: 0;
+  --z-content: 10;
+  --z-sticky: 50;
+  --z-overlay: 100;
+  --z-modal: 200;
+  --z-toast: 300;
+  --z-tooltip: 400;
+  --z-noise: 9997;
+  --z-cursor: 9999;
+
+  /* ─── Typography Hierarchy Scale ─── */
+  /* Display — Hero and major headlines */
+  --type-display-xl: clamp(3rem, 8vw, 7rem);
+  --type-display-lg: clamp(2.5rem, 6vw, 5rem);
+  --type-display-md: clamp(2rem, 4vw, 3.5rem);
+  --type-display-sm: clamp(1.5rem, 3vw, 2.25rem);
+
+  /* Headlines — Section titles */
+  --type-headline-xl: clamp(2rem, 4vw, 3rem);
+  --type-headline-lg: clamp(1.75rem, 3vw, 2.5rem);
+  --type-headline-md: clamp(1.5rem, 2.5vw, 2rem);
+  --type-headline-sm: clamp(1.25rem, 2vw, 1.5rem);
+
+  /* Body — Readable paragraphs */
+  --type-body-xl: clamp(1.125rem, 1.5vw, 1.375rem);
+  --type-body-lg: clamp(1rem, 1.25vw, 1.125rem);
+  --type-body-md: 1rem;
+  --type-body-sm: 0.875rem;
+
+  /* UI — Labels, buttons, captions */
+  --type-ui-xl: 1.125rem;
+  --type-ui-lg: 1rem;
+  --type-ui-md: 0.875rem;
+  --type-ui-sm: 0.75rem;
+
+  /* Mono — Code and technical text */
+  --type-mono-lg: 1rem;
+  --type-mono-md: 0.875rem;
+  --type-mono-sm: 0.75rem;
+
+  /* Dynamic line-heights based on font size and viewport */
+  --lh-display: clamp(1.0, 1.05 - 0.05 * (100vw - 320px) / (1920 - 320), 1.1);
+  --lh-headline: clamp(1.1, 1.2 - 0.1 * (100vw - 320px) / (1920 - 320), 1.3);
+  --lh-body: clamp(1.5, 1.6 - 0.1 * (100vw - 320px) / (1920 - 320), 1.7);
+  --lh-ui: clamp(1.3, 1.4 - 0.1 * (100vw - 320px) / (1920 - 320), 1.5);
+}
+
+/* ─── Selection Styles ─── */
+::selection {
+  background-color: rgba(245, 245, 240, 0.35);
+  color: var(--color-void-black);
+}
+
+::-moz-selection {
+  background-color: rgba(245, 245, 240, 0.35);
+  color: var(--color-void-black);
+}
+
+/* ─── Custom Scrollbar ─── */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-void-black);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-graphite);
+  border-radius: var(--radius-sm);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-lamp-cream);
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-graphite) var(--color-void-black);
+}
+
+/* ─── Global Reduced Motion Guard ─── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,254 @@
+{
+  "meta": {
+    "lastModified": "2026-08-20T00:00:00.000Z",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "id": "svc-1",
+      "type": "service",
+      "order": 1,
+      "published": true,
+      "content": {
+        "title": "Premium Landing Pages",
+        "description": "High-performance, conversion-focused pages that load in under a second and look deliberately considered. No templates.",
+        "icon": "layout-grid",
+        "features": [
+          "Sub-1s load times",
+          "Custom design — no templates",
+          "Conversion-optimized copy",
+          "Lighthouse 95+ scores"
+        ],
+        "cta": "Start a landing page project"
+      }
+    },
+    {
+      "id": "svc-2",
+      "type": "service",
+      "order": 2,
+      "published": true,
+      "content": {
+        "title": "End-to-End Applications",
+        "description": "Full-stack platforms engineered for scale — from database architecture to polished interface. Ship once, grow infinitely.",
+        "icon": "layers",
+        "features": [
+          "PostgreSQL / Prisma / Next.js",
+          "Type-safe API with tRPC",
+          "Auth with Clerk or NextAuth",
+          "Deploy to Vercel or AWS"
+        ],
+        "cta": "Build a custom application"
+      }
+    },
+    {
+      "id": "svc-3",
+      "type": "service",
+      "order": 3,
+      "published": true,
+      "content": {
+        "title": "Production-Ready Updates",
+        "description": "Local businesses deserve the same quality as enterprise. We maintain, modernize, and deploy updates that just work.",
+        "icon": "refresh-cw",
+        "features": [
+          "Legacy codebase modernization",
+          "CI/CD pipeline setup",
+          "Performance audits & fixes",
+          "Ongoing retainer support"
+        ],
+        "cta": "Modernize your stack"
+      }
+    },
+    {
+      "id": "cs-1",
+      "type": "caseStudy",
+      "order": 1,
+      "published": true,
+      "content": {
+        "title": "Baker & Vine — Hospitality Platform",
+        "description": "Full-stack ordering system for a local restaurant group",
+        "badge": "Web App",
+        "image": "https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=1200&q=80",
+        "client": "Baker & Vine Hospitality Group",
+        "industry": "Food & Beverage",
+        "timeline": "8 weeks",
+        "stack": ["Next.js", "PostgreSQL", "Prisma", "Stripe", "Tailwind"],
+        "results": [
+          "40% increase in online orders",
+          "Zero-downtime launch",
+          "99.9% uptime SLA"
+        ],
+        "testimonial": {
+          "quote": "The ordering platform transformed our Friday night rush from chaos to clockwork. Customers order ahead, kitchen sees tickets in real time, and we've cut wait times in half.",
+          "author": "Marcus Chen",
+          "role": "Operations Director",
+          "company": "Baker & Vine"
+        }
+      }
+    },
+    {
+      "id": "cs-2",
+      "type": "caseStudy",
+      "order": 2,
+      "published": true,
+      "content": {
+        "title": "Apex Fitness — Brand Launch",
+        "description": "Landing page for a boutique fitness studio opening",
+        "badge": "Landing Page",
+        "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=80",
+        "client": "Apex Fitness Studio",
+        "industry": "Health & Wellness",
+        "timeline": "3 weeks",
+        "stack": ["Astro", "React", "GSAP", "Tailwind", "Vercel"],
+        "results": [
+          "280+ memberships sold pre-launch",
+          "98 Lighthouse Performance",
+          "Featured in CSS Design Awards"
+        ],
+        "testimonial": {
+          "quote": "They understood the energy we wanted to project before we did. The page didn't just look premium — it converted. We hit our 6-month membership target in week two.",
+          "author": "Sarah Mitchell",
+          "role": "Founder",
+          "company": "Apex Fitness"
+        }
+      }
+    },
+    {
+      "id": "cs-3",
+      "type": "caseStudy",
+      "order": 3,
+      "published": true,
+      "content": {
+        "title": "Cedar & Oak — E-Commerce Revamp",
+        "description": "Performance overhaul of a local furniture store",
+        "badge": "Production",
+        "image": "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=1200&q=80",
+        "client": "Cedar & Oak Furnishings",
+        "industry": "Retail / E-Commerce",
+        "timeline": "6 weeks",
+        "stack": ["Next.js", "Shopify Headless", "Sanity CMS", "Vercel"],
+        "results": [
+          "3.2x faster page loads",
+          "27% lift in conversion rate",
+          "58% reduction in cart abandonment"
+        ],
+        "testimonial": {
+          "quote": "Our old site was losing us sales every day. The new headless setup is fast, the content team loves Sanity, and we finally have a store that feels as crafted as our furniture.",
+          "author": "James Whitaker",
+          "role": "Owner",
+          "company": "Cedar & Oak"
+        }
+      }
+    },
+    {
+      "id": "cs-4",
+      "type": "caseStudy",
+      "order": 4,
+      "published": true,
+      "content": {
+        "title": "Northlight Docs — SaaS Dashboard",
+        "description": "Internal tooling for a legal document automation firm",
+        "badge": "Web App",
+        "image": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1200&q=80",
+        "client": "Northlight Legal Tech",
+        "industry": "Legal Technology",
+        "timeline": "12 weeks",
+        "stack": ["Remix", "PostgreSQL", "Prisma", "tRPC", "Playwright"],
+        "results": [
+          "90% reduction in manual doc prep",
+          "SOC 2 Type II ready architecture",
+          "Sub-200ms API p95 latency"
+        ],
+        "testimonial": {
+          "quote": "We needed a dashboard that paralegals would actually use — not fight. The team nailed the UX, the type safety caught bugs before deploy, and the test coverage gives us confidence to ship weekly.",
+          "author": "Priya Natarajan",
+          "role": "CTO",
+          "company": "Northlight Legal Tech"
+        }
+      }
+    },
+    {
+      "id": "metric-1",
+      "type": "metric",
+      "order": 1,
+      "published": true,
+      "content": {
+        "label": "Projects Shipped",
+        "value": "47",
+        "suffix": "+",
+        "description": "Production deployments across web, mobile, and internal tooling"
+      }
+    },
+    {
+      "id": "metric-2",
+      "type": "metric",
+      "order": 2,
+      "published": true,
+      "content": {
+        "label": "Avg. Lighthouse Score",
+        "value": "96",
+        "suffix": "/100",
+        "description": "Performance, accessibility, best practices, SEO — averaged across all launches"
+      }
+    },
+    {
+      "id": "metric-3",
+      "type": "metric",
+      "order": 3,
+      "published": true,
+      "content": {
+        "label": "Client Retention",
+        "value": "94",
+        "suffix": "%",
+        "description": "Clients who return for phase 2, retainers, or referrals"
+      }
+    },
+    {
+      "id": "metric-4",
+      "type": "metric",
+      "order": 4,
+      "published": true,
+      "content": {
+        "label": "Time to First Deploy",
+        "value": "3.2",
+        "suffix": " weeks",
+        "description": "Median timeline from kickoff to production for landing pages"
+      }
+    },
+    {
+      "id": "testimonial-1",
+      "type": "testimonial",
+      "order": 1,
+      "published": true,
+      "content": {
+        "quote": "S&S Innovix didn't just build our site — they engineered a growth engine. Six months in and our inbound pipeline has tripled. The code quality means we can iterate fast without accruing debt.",
+        "name": "Elena Vasquez",
+        "role": "VP of Growth",
+        "company": "Meridian Logistics"
+      }
+    },
+    {
+      "id": "testimonial-2",
+      "type": "testimonial",
+      "order": 2,
+      "published": true,
+      "content": {
+        "quote": "Rare to find a team that treats a local business project with the same rigor as enterprise work. They pushed back on our bad ideas, proposed better ones, and delivered a platform our dev team is proud to maintain.",
+        "name": "David Okonkwo",
+        "role": "Technical Director",
+        "company": "Harbor Freight Forwarding"
+      }
+    },
+    {
+      "id": "testimonial-3",
+      "type": "testimonial",
+      "order": 3,
+      "published": true,
+      "content": {
+        "quote": "The landing page they built for our Series A announcement handled 40k concurrent visitors without a hiccup. More importantly, the narrative structure they helped craft got us covered in TechCrunch and The Verge.",
+        "name": "Rachel Kim",
+        "role": "Head of Marketing",
+        "company": "Orbit AI"
+      }
+    }
+  ]
+}
