@@ -20,13 +20,13 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/CustomEase.min.js"></script>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
-    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap');
     body { font-family: var(--font-display); }
     .font-display { font-family: var(--font-display); }
     .serif-accent { font-family: var(--font-serif); font-style: italic; font-weight: 400; }
-    .gradient-text { background: linear-gradient(90deg, #fff, var(--color-primary), #fff); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    /*  class removed: gradient on text is decorative (craft-floor ban) */
 
     /* Glassmorphism contact inputs */
     .contact-input {
@@ -302,9 +302,9 @@
       --leading-normal: 1.5;
       --leading-relaxed: 1.65;
 
-      --font-display: 'Inter', system-ui, sans-serif;
+      --font-display: 'Montserrat', system-ui, sans-serif;
       --font-mono: 'JetBrains Mono', monospace;
-      --font-serif: 'Playfair Display', serif;
+      --font-serif: 'Cormorant Garamond', serif;
 
       /* Spring Motion Tokens (Apple fluid motion) */
       --spring-critical-duration: 0.4s;
@@ -510,7 +510,7 @@
       <!-- Logo - cropped to hex icon only + HTML text -->
       <a href="#" class="flex items-center gap-3" aria-label="S&S Innovix Home">
         <video autoplay loop muted playsinline class="logo-spin w-10 h-10 object-cover mix-blend-screen rounded-lg" style="filter: brightness(var(--logo-video-brightness)) contrast(var(--logo-video-contrast));" aria-hidden="true">
-          <source src="/logo.mp4" type="video/mp4" />
+          <source src="/SS-INNOVIX/logo.mp4" type="video/mp4" />
         </video>
         <span class="text-[16px] font-medium tracking-[0.02em] text-white hidden sm:inline">S&S Innovix</span>
       </a>
@@ -537,7 +537,7 @@
   <section class="relative flex min-h-screen items-center justify-center overflow-hidden">
     <!-- Hero background video -->
     <video autoplay playsinline preload="metadata" muted poster="/assets/logo-icon-isolated.png" class="hero-video absolute inset-0 w-full h-full object-cover -z-20" style="filter: saturate(var(--hero-video-saturate)) brightness(var(--hero-video-brightness)) contrast(var(--hero-video-contrast)); will-change: transform; transform: translateZ(0);">
-      <source src="/herovideo.mp4" type="video/mp4" />
+      <source src="/SS-INNOVIX/herovideo.mp4" type="video/mp4" />
     </video>
 
     <!-- Dark overlay for text contrast -->
@@ -550,8 +550,8 @@
         <!-- Reduced motion fallback -->
         <div class="reduced-motion-fallback hidden flex items-center justify-center">
           <picture>
-            <source srcset="/assets/logo-icon-isolated-200-BtzVvHDn.webp" type="image/webp">
-            <img src="/assets/logo-icon-isolated.png" alt="S&S Innovix" class="max-w-[400px] h-auto" />
+            <source srcset="/SS-INNOVIX/assets/logo-icon-isolated-200-BtzVvHDn.webp" type="image/webp">
+            <img src="/SS-INNOVIX/assets/logo-icon-isolated.png" alt="S&S Innovix" class="max-w-[400px] h-auto" />
           </picture>
         </div>
       </div>
@@ -569,7 +569,7 @@
       <p class="font-mono text-lg sm:text-xl tracking-widest uppercase text-[rgba(245,245,240,0.7)] mb-10 hero-tagline" style="letter-spacing: var(--tracking-mono);">>_ DIGITAL DEVELOPMENT AGENCY</p>
 
       <h2 class="hero-headline mx-auto max-w-4xl text-[54px] font-light leading-[var(--leading-snug)] tracking-[var(--tracking-display-md)] text-white md:text-[72px] lg:text-[84px]">
-        Your vision, made <span class="serif-accent font-medium gradient-text">reality</span>.
+        Your vision, made <span class="serif-accent font-medium ">reality</span>.
       </h2>
 
       <p class="hero-subhead mx-auto mt-8 max-w-2xl text-lg font-light leading-[var(--leading-relaxed)] tracking-[var(--tracking-body)] text-white/70 md:text-xl">
@@ -593,7 +593,7 @@
     <div class="mx-auto max-w-[1200px] px-6 lg:px-8">
       <p class="mb-4 text-[11px] font-medium uppercase tracking-[0.07em] text-white/40">What we do</p>
       <h2 class="mb-16 text-[40px] font-light leading-[1.1] tracking-[-0.02em] text-white md:text-[54px]">
-        End-to-end applications <span class="serif-accent font-normal gradient-text">built</span> for <span class="serif-accent font-normal gradient-text">scale</span>.
+        End-to-end applications <span class="serif-accent font-normal ">built</span> for <span class="serif-accent font-normal ">scale</span>.
       </h2>
       <div class="grid gap-5 md:grid-cols-6 auto-rows-[minmax(180px,auto)]">
         <!-- Feature 1 - Landing Pages - taller card (spans 2 rows) -->
@@ -636,75 +636,81 @@
     <div class="mx-auto max-w-[1200px] px-6 lg:px-8">
       <p class="mb-4 text-[11px] font-medium uppercase tracking-[0.07em] text-white/40">Selected work</p>
       <h2 class="mb-16 text-[40px] font-light leading-[1.1] tracking-[-0.02em] text-white md:text-[54px]">
-        Recent <span class="serif-accent font-normal gradient-text ml-2">projects</span>.
+        Recent <span class="serif-accent font-normal  ml-2">projects</span>.
       </h2>
-      <div class="grid gap-8 md:grid-cols-2">
-        <a href="#" class="group relative overflow-hidden rounded-[10px]">
-          <div class="aspect-[4/3] overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=1200&q=80" alt="Baker & Vine" class="h-full w-full object-cover group-hover:scale-[1.30]" style="filter: saturate(0.4) brightness(0.85) contrast(1.05); transition: transform 10s ease-out !important;" />
+      <div class="grid gap-8 md:grid-cols-3">
+        <!-- LUXE BREW -->
+        <a href="../LUXEBREW/src/index.html" class="group relative overflow-hidden rounded-[10px] bg-[var(--color-bg-card)] flex flex-col">
+          <div class="relative aspect-[4/5] overflow-hidden">
+            <img src="/SS-INNOVIX/screenshots/Luxebrew_hero.webp" alt="LUXE BREW — Artisan Coffee" class="h-full w-full object-contain transition-transform duration-[10s] ease-out group-hover:scale-[1.30]" style="filter: saturate(0.4) brightness(0.85) contrast(1.05);" />
           </div>
           <div class="absolute top-4 right-4">
-            <span class="inline-block rounded-[9999px] px-4 py-1.5 text-[11px] font-medium uppercase tracking-[0.05em] text-white backdrop-blur-[20px] saturate-[1.4]" style="background: rgba(200,200,200,0.08); border: 1px solid rgba(176,141,106,0.3); box-shadow: 0 2px 8px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.06);">Web App</span>
-          </div>
-          <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/90 via-black/10 to-transparent">
-            <div class="w-full h-[1px] bg-gradient-to-r from-transparent via-[var(--color-primary)] to-transparent mb-4 group-hover:scale-x-100 group-hover:origin-left transition-transform duration-500 origin-right scale-x-0"></div>
-            <p class="text-[13px] font-light text-[#999]">Full-stack ordering system for a restaurant group</p>
+            <span class="inline-block rounded-[9999px] px-4 py-1.5 text-[11px] font-medium uppercase tracking-[0.05em] text-white backdrop-blur-[20px] saturate-[1.4]" style="background: rgba(200,200,200,0.08); border: 1px solid rgba(176,141,106,0.3); box-shadow: 0 2px 8px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.06);">Artisan Coffee</span>
           </div>
           <div class="absolute top-4 left-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
             <div class="flex h-9 w-9 items-center justify-center rounded-full" style="background: rgba(200,200,200,0.08); border: 1px solid rgba(176,141,106,0.3); backdrop-filter: blur(20px) saturate(1.4); box-shadow: 0 2px 8px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.06);">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
             </div>
+          </div>
+          <div class="p-4">
+            <p class="text-[14px] font-light text-white/90 leading-relaxed">Luxury coffee landing — single-origin micro-lots, precision roasting.</p>
           </div>
         </a>
-        <a href="#" class="group relative overflow-hidden rounded-[10px]">
-          <div class="aspect-[4/3] overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=80" alt="Apex Fitness" class="h-full w-full object-cover group-hover:scale-[1.30]" style="filter: saturate(0.4) brightness(0.85) contrast(1.05); transition: transform 10s ease-out !important;" />
+        <!-- THE GILDED BLADE -->
+        <a href="../Barbarshop/index.html" class="group relative overflow-hidden rounded-[10px] bg-[var(--color-bg-card)] flex flex-col">
+          <div class="relative aspect-[4/5] overflow-hidden">
+            <img src="/SS-INNOVIX/screenshots/Gilded_blade_hero.webp" alt="The Gilded Blade — Premium Barbershop" class="h-full w-full object-contain transition-transform duration-[10s] ease-out group-hover:scale-[1.30]" style="filter: saturate(0.4) brightness(0.85) contrast(1.05);" />
           </div>
           <div class="absolute top-4 right-4">
-            <span class="inline-block rounded-[9999px] px-4 py-1.5 text-[11px] font-medium uppercase tracking-[0.05em] text-white backdrop-blur-[20px] saturate-[1.4]" style="background: rgba(200,200,200,0.08); border: 1px solid rgba(176,141,106,0.3); box-shadow: 0 2px 8px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.06);">Landing Page</span>
-          </div>
-          <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/90 via-black/10 to-transparent">
-            <div class="w-full h-[1px] bg-gradient-to-r from-transparent via-[var(--color-primary)] to-transparent mb-4 group-hover:scale-x-100 group-hover:origin-left transition-transform duration-500 origin-right scale-x-0"></div>
-            <p class="text-[13px] font-light text-[#999]">Landing page for a boutique fitness studio opening</p>
+            <span class="inline-block rounded-[9999px] px-4 py-1.5 text-[11px] font-medium uppercase tracking-[0.05em] text-white backdrop-blur-[20px] saturate-[1.4]" style="background: rgba(200,200,200,0.08); border: 1px solid rgba(176,141,106,0.3); box-shadow: 0 2px 8px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.06);">Luxury Grooming</span>
           </div>
           <div class="absolute top-4 left-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
             <div class="flex h-9 w-9 items-center justify-center rounded-full" style="background: rgba(200,200,200,0.08); border: 1px solid rgba(176,141,106,0.3); backdrop-filter: blur(20px) saturate(1.4); box-shadow: 0 2px 8px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.06);">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
             </div>
+          </div>
+          <div class="p-4">
+            <p class="text-[14px] font-light text-white/90 leading-relaxed">Every cut a masterpiece, every shave a ritual.</p>
           </div>
         </a>
-        <a href="#" class="group relative overflow-hidden rounded-[10px]">
-          <div class="aspect-[4/3] overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=1200&q=80" alt="Cedar & Oak" class="h-full w-full object-cover transition-transform duration-[10s] ease-out group-hover:scale-[1.30]" style="filter: saturate(0.4) brightness(0.85) contrast(1.05);" />
+        <!-- APEX FITNESS — live scrollable preview -->
+        <a href="https://sandeepsilumula.github.io/ApexFitness/" target="_blank" rel="noopener noreferrer" class="group relative overflow-hidden rounded-[10px] bg-[var(--color-bg-card)] flex flex-col">
+          <div class="relative aspect-[4/5] overflow-hidden">
+            <iframe
+              src="https://sandeepsilumula.github.io/ApexFitness/"
+              title="Apex Fitness — live app preview"
+              loading="lazy"
+              sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+              class="h-full w-full border-0 transition-transform duration-[10s] ease-out group-hover:scale-[1.30]"
+              style="filter: saturate(0.4) brightness(0.85) contrast(1.05);"></iframe>
           </div>
-          <div class="absolute top-4 right-4">
-            <span class="inline-block rounded-[9999px] px-4 py-1.5 text-[11px] font-medium uppercase tracking-[0.05em] text-white backdrop-blur-[20px] saturate-[1.4]" style="background: rgba(200,200,200,0.08); border: 1px solid rgba(176,141,106,0.3); box-shadow: 0 2px 8px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.06);">Production</span>
+          <div class="absolute top-4 right-4 pointer-events-none">
+            <span class="inline-block rounded-[9999px] px-4 py-1.5 text-[11px] font-medium uppercase tracking-[0.05em] text-white backdrop-blur-[20px] saturate-[1.4]" style="background: rgba(200,200,200,0.08); border: 1px solid rgba(176,141,106,0.3); box-shadow: 0 2px 8px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.06);">Fitness &amp; Training</span>
           </div>
-          <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/90 via-black/10 to-transparent">
-            <div class="w-full h-[1px] bg-gradient-to-r from-transparent via-[var(--color-primary)] to-transparent mb-4 group-hover:scale-x-100 group-hover:origin-left transition-transform duration-500 origin-right scale-x-0"></div>
-            <p class="text-[13px] font-light text-[#999]">Performance overhaul of a local furniture store</p>
-          </div>
-          <div class="absolute top-4 left-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+          <div class="absolute top-4 left-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none">
             <div class="flex h-9 w-9 items-center justify-center rounded-full" style="background: rgba(200,200,200,0.08); border: 1px solid rgba(176,141,106,0.3); backdrop-filter: blur(20px) saturate(1.4); box-shadow: 0 2px 8px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.06);">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
             </div>
+          </div>
+          <div class="p-4">
+            <p class="text-[14px] font-light text-white/90 leading-relaxed">Full-stack training platform — live app, scroll to explore.</p>
           </div>
         </a>
-        <a href="#" class="group relative overflow-hidden rounded-[10px]">
-          <div class="aspect-[4/3] overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1200&q=80" alt="Northlight Docs" class="h-full w-full object-cover transition-transform duration-[10s] ease-out group-hover:scale-[1.30]" style="filter: saturate(0.4) brightness(0.85) contrast(1.05);" />
+        <!-- AUTO PRESTIGE -->
+        <a href="../Auto/index.html" class="group relative overflow-hidden rounded-[10px] bg-[var(--color-bg-card)] flex flex-col">
+          <div class="relative aspect-[4/5] overflow-hidden">
+            <img src="/SS-INNOVIX/screenshots/Auto_prestige_hero.webp" alt="Auto Prestige — Luxury Automotive" class="h-full w-full object-contain transition-transform duration-[10s] ease-out group-hover:scale-[1.30]" style="filter: saturate(0.4) brightness(0.85) contrast(1.05);" />
           </div>
           <div class="absolute top-4 right-4">
-            <span class="inline-block rounded-[9999px] px-4 py-1.5 text-[11px] font-medium uppercase tracking-[0.05em] text-white backdrop-blur-[20px] saturate-[1.4]" style="background: rgba(200,200,200,0.08); border: 1px solid rgba(176,141,106,0.3); box-shadow: 0 2px 8px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.06);">Web App</span>
-          </div>
-          <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/90 via-black/10 to-transparent">
-            <div class="w-full h-[1px] bg-gradient-to-r from-transparent via-[var(--color-primary)] to-transparent mb-4 group-hover:scale-x-100 group-hover:origin-left transition-transform duration-500 origin-right scale-x-0"></div>
-            <p class="text-[13px] font-light text-[#999]">Internal tooling for a legal document automation firm</p>
+            <span class="inline-block rounded-[9999px] px-4 py-1.5 text-[11px] font-medium uppercase tracking-[0.05em] text-white backdrop-blur-[20px] saturate-[1.4]" style="background: rgba(200,200,200,0.08); border: 1px solid rgba(176,141,106,0.3); box-shadow: 0 2px 8px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.06);">Automotive Luxury</span>
           </div>
           <div class="absolute top-4 left-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
             <div class="flex h-9 w-9 items-center justify-center rounded-full" style="background: rgba(200,200,200,0.08); border: 1px solid rgba(176,141,106,0.3); backdrop-filter: blur(20px) saturate(1.4); box-shadow: 0 2px 8px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.06);">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
             </div>
+          </div>
+          <div class="p-4">
+            <p class="text-[14px] font-light text-white/90 leading-relaxed">Bespoke refinement — true luxury lives in the details.</p>
           </div>
         </a>
       </div>
@@ -715,7 +721,7 @@
   <section class="relative bg-[var(--color-background)] py-24 md:py-32">
     <div class="relative z-10 mx-auto max-w-[800px] px-6 lg:px-8 text-center">
       <h2 class="text-[40px] md:text-[54px] lg:text-[64px] font-light leading-[1.1] tracking-[-0.02em] text-white">
-        Ready to build <span class="serif-accent font-normal gradient-text">something exceptional</span>?
+        Ready to build <span class="serif-accent font-normal ">something exceptional</span>?
       </h2>
       <p class="mt-6 text-lg font-light leading-relaxed text-white/50 max-w-xl mx-auto">
         Let's discuss your project. No templates, no compromise — just premium digital craft.
@@ -730,7 +736,7 @@
   <section id="process" class="relative bg-[var(--color-background)] py-24 md:py-32">
     <div class="mx-auto max-w-[1200px] px-6 lg:px-8">
       <p class="mb-4 text-[11px] font-medium uppercase tracking-[0.07em] text-white/40">How we work</p>
-      <h2 class="mb-20 text-[40px] font-light leading-[1.1] tracking-[-0.02em] text-white md:text-[54px]">Our <span class="serif-accent font-normal gradient-text">craft</span> process</h2>
+      <h2 class="mb-20 text-[40px] font-light leading-[1.1] tracking-[-0.02em] text-white md:text-[54px]">Our <span class="serif-accent font-normal ">craft</span> process</h2>
       <div class="grid gap-8 md:grid-cols-3">
         <div class="group process-step" style="background: var(--material-bg); backdrop-filter: var(--material-blur); border: 1px solid var(--material-border);">
           <div class="w-14 h-14 mx-auto rounded-full flex items-center justify-center mb-6" style="background: var(--glass-btn-bg); border: 1px solid var(--glass-btn-border);"><span class="text-[var(--color-primary)] text-[18px] font-bold">01</span></div>
@@ -763,7 +769,7 @@
   <!-- Testimonials Section -->
   <section id="testimonials" class="bg-[var(--color-background)] py-24 md:py-32">
     <div class="mx-auto max-w-[1200px] px-6 lg:px-8">
-      <h2 class="mb-16 text-[40px] font-light leading-[1.1] tracking-[-0.02em] text-white md:text-[54px]">What our <span class="serif-accent font-normal gradient-text">clients</span> say</h2>
+      <h2 class="mb-16 text-[40px] font-light leading-[1.1] tracking-[-0.02em] text-white md:text-[54px]">What our <span class="serif-accent font-normal ">clients</span> say</h2>
       <div class="grid gap-5 md:grid-cols-3">
         <div class="group relative rounded-[14px] p-8 transition-all duration-[var(--duration-normal)]" style="background: var(--material-bg); backdrop-filter: var(--material-blur); border: 1px solid var(--material-border);">
           <div class="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[var(--color-primary)]/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -791,13 +797,13 @@
   <section id="team" class="bg-[var(--color-background)] py-24 md:py-32">
     <div class="mx-auto max-w-[1200px] px-6 lg:px-8 text-center">
       <p class="mb-4 text-[11px] font-medium uppercase tracking-[0.07em] text-white/40">THE TEAM</p>
-      <h2 class="mb-16 text-[40px] font-light leading-[1.1] tracking-[-0.02em] text-white md:text-[54px]">People Behind <span class="serif-accent font-normal gradient-text">The Pixels</span></h2>
+      <h2 class="mb-16 text-[40px] font-light leading-[1.1] tracking-[-0.02em] text-white md:text-[54px]">People Behind <span class="serif-accent font-normal ">The Pixels</span></h2>
       <div class="grid gap-8 md:grid-cols-2 max-w-3xl mx-auto">
         <!-- Co-Founder Card -->
         <div class="rounded-[10px] bg-[var(--color-bg-card)] p-8 flex flex-col items-center text-center">
           <div class="h-80 w-auto aspect-[1086/1448] rounded-xl overflow-hidden mb-6 ring-2 ring-[var(--color-primary)]/40 bg-[var(--color-primary-dim)]" style="opacity:1">
             <img
-              src="/assets/Profile images/Sandeep.png"
+              src="/SS-INNOVIX/assets/Profile images/Sandeep.png"
               alt="Sandeep Silumula"
               width="1086"
               height="1448"
@@ -814,7 +820,7 @@
         <div class="rounded-[10px] bg-[var(--color-bg-card)] p-8 flex flex-col items-center text-center">
           <div class="h-80 w-auto aspect-[1152/2048] rounded-xl overflow-hidden mb-6 ring-2 ring-[var(--color-primary)]/40 bg-[var(--color-primary-dim)]" style="opacity:1">
             <img
-              src="/assets/Profile images/Sumith.jpeg"
+              src="/SS-INNOVIX/assets/Profile images/Sumith.jpeg"
               alt="Sumith Shirodkar"
               width="1152"
               height="2048"
@@ -824,7 +830,7 @@
               style="image-rendering: -webkit-optimize-contrast; opacity:1 !important;"
             />
           </div>
-          <h3 class="text-[18px] font-medium text-white mb-1">Sumith Shirodkar</h3>
+          <h3 class="text-[18px] font-medium text-white mb-1">Sumit Shirodkar</h3>
           <p class="text-[14px] text-white/50 uppercase tracking-wider">Co-Founder</p>
         </div>
       </div>
@@ -835,7 +841,7 @@
   <section id="faq" class="relative bg-[var(--color-background)] py-24 md:py-32">
     <div class="mx-auto max-w-3xl px-6 lg:px-8">
       <p class="mb-4 text-[11px] font-medium uppercase tracking-[0.07em] text-white/40">Got questions?</p>
-      <h2 class="mb-16 text-[40px] font-light leading-[1.1] tracking-[-0.02em] text-white md:text-[54px]">Frequently asked <span class="serif-accent font-normal gradient-text">questions</span></h2>
+      <h2 class="mb-16 text-[40px] font-light leading-[1.1] tracking-[-0.02em] text-white md:text-[54px]">Frequently asked <span class="serif-accent font-normal ">questions</span></h2>
       <div class="space-y-3">
         <div class="faq-item rounded-[14px] overflow-hidden transition-all duration-[var(--duration-normal)]" style="background: var(--material-bg); backdrop-filter: var(--material-blur); border: 1px solid var(--material-border);">
           <button class="faq-toggle w-full flex items-center justify-between p-6 text-left" data-faq-toggle aria-expanded="false">
@@ -876,7 +882,7 @@
         <!-- Contact Info -->
         <div class="pr-12 lg:pr-16">
           <p class="mb-4 text-[11px] font-medium uppercase tracking-[0.07em] text-white/40">Get in touch</p>
-          <h2 class="mb-8 text-[40px] font-light leading-[1.1] tracking-[-0.02em] text-white md:text-[54px]">Let's build something <span class="serif-accent font-normal gradient-text">together</span>.</h2>
+          <h2 class="mb-8 text-[40px] font-light leading-[1.1] tracking-[-0.02em] text-white md:text-[54px]">Let's build something <span class="serif-accent font-normal ">together</span>.</h2>
           <p class="text-[16px] font-light leading-relaxed text-white/70 mb-12 max-w-lg">Have a project in mind? We'd love to hear about it. Reach out and we'll get back to you within 24 hours.</p>
 
           <!-- Contact Details -->
@@ -972,7 +978,7 @@
         <!-- Footer logo - isolated icon + text -->
         <a href="#" class="flex items-center gap-3" aria-label="S&S Innovix Home">
           <video autoplay loop muted playsinline class="logo-spin h-9 w-9 object-cover mix-blend-screen rounded-md" style="filter: brightness(var(--logo-video-brightness)) contrast(var(--logo-video-contrast));" aria-hidden="true">
-            <source src="/logo.mp4" type="video/mp4" />
+            <source src="/SS-INNOVIX/logo.mp4" type="video/mp4" />
           </video>
           <span class="text-[14px] font-medium tracking-[0.02em] text-white/90 hidden sm:inline">S&S Innovix</span>
         </a>
@@ -984,7 +990,7 @@
       </div>
       <div class="mt-16 text-center">
         <p class="text-[54px] md:text-[64px] font-light tracking-[-0.02em] text-white/90">
-          Digital development, <span class="serif-accent font-normal gradient-text">shipped</span>.
+          Digital development, <span class="serif-accent font-normal ">shipped</span>.
         </p>
       </div>
       <div class="mt-12 flex items-center justify-center gap-4">
